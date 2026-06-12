@@ -1,5 +1,9 @@
-<div align="left">
-  
+```markdown
+<div align="center">
+
+
+```
+
 ███╗   ██╗ █████╗ ██╗   ██╗██╗███████╗██╗ ██████╗ ██╗  ██╗████████╗
 ████╗  ██║██╔══██╗██║   ██║██║██╔════╝██║██╔════╝ ██║  ██║╚══██╔══╝
 ██╔██╗ ██║███████║██║   ██║██║███████╗██║██║  ███╗███████║   ██║
@@ -7,10 +11,9 @@
 ██║ ╚████║██║  ██║ ╚████╔╝ ██║███████║██║╚██████╔╝██║  ██║   ██║
 ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝
 
+```
 
-**Contextual Spatiotemporal Foundation Model Platform for Maritime Anomaly Intelligence** 
-
-*Piraeus Operational Corridor Dataset · 2017–2019 · Out-of-Core Processing Stream*
+**Contextual Spatiotemporal Foundation Model Platform for Maritime Anomaly Intelligence** *Piraeus Operational Corridor Dataset · 2017–2019 · Out-of-Core Processing Stream*
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org)
@@ -64,7 +67,7 @@ The ingestion framework enforces strict type safety, parsing 62 explicit feature
 
 | Modality Namespace | Selected Target Fields | Technical Description | Transformation Rule |
 | :--- | :--- | :--- | :--- |
-| **PHYSICS** | `speed_raw`, `actual_speed_knots`, `course_change`, `turn_rate`, `jerk`, `delta_x_nm`, `delta_y_nm` | Kinematic spatial derivatives and local tangent coordinate plane shifts. | Cohort-Stratified Z-Score Normalization |
+| **PHYSICS** | `speed_raw`, `actual_speed_knots`, `course_change`, `turn_rate`, `jerk`, `acceleration`, `delta_x_nm`, `delta_y_nm` | Kinematic spatial derivatives and local tangent coordinate plane shifts. | Cohort-Stratified Z-Score Normalization |
 | **WEATHER** | `wind_speed`, `temperature`, `pressure`, `headwind_component`, `crosswind_component` | Continuous meteorological variables from NOAA GFS spatial grids. | Robust Centered Scaling |
 | **CONTEXT** | `hour_sin`, `hour_cos`, `voyage_phase_cruising`, `vessel_superclass_id`, `shiptype` | Cyclic temporal values, one-hot operational status, and taxonomy details. | Passthrough / Int-Mapping |
 | **QUALITY** | `flag_speed_anomaly`, `flag_position_jump`, `reliability_score` | Binary quality filters and a continuous asset reliability index `[0.0, 1.0]`. | Dynamic Penalty Deduction |
@@ -84,6 +87,9 @@ NaviSight’s core framework was stabilized following a forensic debugging campa
 
 ## 🚀 Pipeline Processing Architecture
 
+
+```
+
 [ Raw ZIP Telemetry Stream ] ──► [ Async Line-Buffer Backpressure ] ──► [ Persistent xxhash Index Mapping ]
 │
 ▼
@@ -95,6 +101,7 @@ NaviSight’s core framework was stabilized following a forensic debugging campa
 ▼
 [ Dual-Channel Alerts Panel ] ◄── [ HNSW Neighbor Graph Match ] ◄── [ Append-Only PyArrow Shard Store ]
 
+```
 
 ---
 
@@ -113,8 +120,12 @@ Once pre-training completes, incoming evaluation sequences are scored simultaneo
 Ensure your local system has `CUDA` compilation layers initialized. Install system dependencies natively:
 ```bash
 pip install polars pyarrow xxhash hnswlib torch streamlit plotly-express
-Execution Lifecycles
-Bash
+
+```
+
+### Execution Lifecycles
+
+```bash
 # 1. Ingest raw AIS logs, compile weather overlays, and generate parquet shards
 python scripts/run_pipeline.py
 
@@ -126,3 +137,15 @@ python -m navisight.engine.train_model
 
 # 4. Spin up the tactical real-time UI dashboard console
 streamlit run scripts/view_validation_dashboard.py
+
+```
+
+---
+
+## ── Reference License ──
+
+Distributed under the Apache 2.0 Research & Production Engineering License Contract. Engineered for enterprise-grade spatiotemporal world model infrastructure.
+
+```
+
+```
