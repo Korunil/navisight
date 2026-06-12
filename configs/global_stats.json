@@ -1,0 +1,158 @@
+{
+  "spatial_bounds": {
+    "lon_min": 23.3,
+    "lon_max": 23.9,
+    "lat_min": 37.6,
+    "lat_max": 38.1
+  },
+  "global_cohort_scales": {
+    "0": {
+      "speed_raw": {
+        "center": 0.1,
+        "scale": 5.2
+      },
+      "actual_speed_knots": {
+        "center": 0.1,
+        "scale": 5.2
+      },
+      "course_change": {
+        "center": 0.0,
+        "scale": 4.0
+      },
+      "acceleration": {
+        "center": 0.0,
+        "scale": 1.0
+      },
+      "turn_rate": {
+        "center": 0.0,
+        "scale": 0.2361111111111111
+      },
+      "jerk": {
+        "center": 0.0,
+        "scale": 1.0
+      },
+      "delta_x_nm": {
+        "center": 0.0,
+        "scale": 0.0015779018209107474
+      },
+      "delta_y_nm": {
+        "center": 0.0,
+        "scale": 0.002000000005182301
+      },
+      "course_sin": {
+        "center": -0.13917310096006552,
+        "scale": 1.2041494205849883
+      },
+      "course_cos": {
+        "center": 0.18223552549214742,
+        "scale": 1.557598504821729
+      },
+      "log_time_diff": {
+        "center": 2.4849066497880004,
+        "scale": 1.1314021114911004
+      },
+      "distance_to_port_nm": {
+        "center": 1.3141814241296843,
+        "scale": 2.260177731653749
+      },
+      "bearing_to_port": {
+        "center": 134.94087316392944,
+        "scale": 175.12680663670474
+      },
+      "turn_rate_speed_ratio": {
+        "center": 0.0,
+        "scale": 0.1284322930281467
+      },
+      "wind_speed": {
+        "center": 2.964076519012451,
+        "scale": 2.6530452966690063
+      },
+      "wind_direction": {
+        "center": 286.1903076171875,
+        "scale": 100.11865234375
+      },
+      "temperature": {
+        "center": 283.6098937988281,
+        "scale": 3.63311767578125
+      },
+      "visibility": {
+        "center": 24099.998046875,
+        "scale": 5228.24072265625
+      },
+      "gust_factor": {
+        "center": 4.153277397155762,
+        "scale": 4.417875289916992
+      },
+      "pressure": {
+        "center": 101457.1328125,
+        "scale": 1635.9140625
+      },
+      "humidity": {
+        "center": 59.86964416503906,
+        "scale": 13.804216384887695
+      },
+      "headwind_component": {
+        "center": 0.5269787907600403,
+        "scale": 3.6479576528072357
+      },
+      "crosswind_component": {
+        "center": 0.02571001648902893,
+        "scale": 3.299421340227127
+      },
+      "distance_to_coast_nm": {
+        "center": 0.6667563319206238,
+        "scale": 1.823496699333191
+      },
+      "distance_to_terminal_nm": {
+        "center": 1.814440922722349,
+        "scale": 2.032850991631384
+      },
+      "harbor_basin_proximity": {
+        "center": 0.006534245201398737,
+        "scale": 0.009855871115074133
+      },
+      "distance_to_land_raster": {
+        "center": 0.6667563319206238,
+        "scale": 1.823496699333191
+      }
+    }
+  },
+  "weather_meso_scales": {
+    "wind_speed": {
+      "center": 4.5,
+      "scale": 3.0
+    },
+    "wind_direction": {
+      "center": 180.0,
+      "scale": 90.0
+    },
+    "temperature": {
+      "center": 293.15,
+      "scale": 8.0
+    },
+    "visibility": {
+      "center": 10000.0,
+      "scale": 2000.0
+    },
+    "gust_factor": {
+      "center": 6.0,
+      "scale": 4.0
+    },
+    "pressure": {
+      "center": 101325.0,
+      "scale": 800.0
+    },
+    "humidity": {
+      "center": 75.0,
+      "scale": 15.0
+    },
+    "headwind_component": {
+      "center": 0.0,
+      "scale": 4.0
+    },
+    "crosswind_component": {
+      "center": 0.0,
+      "scale": 4.0
+    }
+  }
+}
