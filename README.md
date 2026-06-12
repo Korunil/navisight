@@ -125,11 +125,11 @@ pip install polars pyarrow xxhash hnswlib torch streamlit plotly-express
 ### Execution Lifecycles
 
 ```bash
-# 1. Ingest raw AIS logs, compile weather overlays, and generate parquet shards
-python scripts/run_pipeline.py
-
-# 2. Extract cohort-stratified normalization statistics 
+# 1. Extract cohort-stratified normalization statistics 
 python scripts/compute_global_stats.py
+
+# 2. Ingest raw AIS logs, compile weather overlays, and generate parquet shards
+python scripts/run_pipeline.py
 
 # 3. Launch the self-supervised pre-training loop
 python -m navisight.engine.train_model
