@@ -146,3 +146,533 @@ streamlit run scripts/view_validation_dashboard.py
 Distributed under the Apache 2.0 Research & Production Engineering License Contract. Engineered for enterprise-grade spatiotemporal world model infrastructure.
 
 ```
+
+# 🛰️ NaviSight
+
+### Retrieval-Augmented Maritime Behavioral Intelligence Platform
+
+> Learning vessel behavior from AIS telemetry using Transformer-based representation learning, behavioral retrieval systems, counterfactual simulation, and explainable anomaly detection.
+
+---
+
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)
+![Polars](https://img.shields.io/badge/Polars-Lakehouse-purple)
+![Streamlit](https://img.shields.io/badge/Streamlit-Operations%20Dashboard-orange)
+![HNSW](https://img.shields.io/badge/HNSW-ANN%20Retrieval-green)
+![License](https://img.shields.io/badge/Status-Research%20Project-success)
+
+---
+
+# Overview
+
+Modern maritime surveillance systems are largely built around static rules:
+
+* Geofences
+* Speed thresholds
+* Port entry alerts
+* Handcrafted heuristics
+
+While effective for obvious violations, these systems struggle to identify subtle behavioral deviations, deceptive navigation strategies, and emerging operational patterns.
+
+**NaviSight** approaches the problem differently.
+
+Instead of asking:
+
+> "Did the vessel break a predefined rule?"
+
+it asks:
+
+> "Is this vessel behaving differently from what vessels like it have historically done?"
+
+To answer this, NaviSight combines:
+
+* Transformer-based behavioral representation learning
+* Retrieval-augmented anomaly detection
+* Behavioral similarity search
+* Counterfactual trajectory simulation
+* Context-aware risk fusion
+* Explainable intelligence dashboards
+
+The result is a system capable of transforming raw AIS telemetry into actionable behavioral intelligence.
+
+---
+
+# Why This Project Matters
+
+Maritime transportation moves over 80% of global trade.
+
+Yet many surveillance platforms still depend on deterministic alerting logic developed decades ago.
+
+Modern threats increasingly exploit behavioral ambiguity:
+
+* Covert loitering
+* Dark activity preparation
+* Route manipulation
+* Smuggling operations
+* Illegal transshipment
+* Port reconnaissance
+* Coastal infiltration
+
+These behaviors rarely violate a single rule.
+
+Instead, they emerge as subtle deviations across space, time, and operational context.
+
+NaviSight explores how representation learning and retrieval-based reasoning can provide a more adaptive alternative.
+
+Rather than identifying violations, the platform identifies behavioral inconsistency.
+
+This shift mirrors a broader trend occurring across:
+
+* Cybersecurity
+* Fraud detection
+* Autonomous systems
+* National security analytics
+* Industrial monitoring
+
+where systems increasingly focus on learning normal behavior and detecting meaningful deviations.
+
+---
+
+# System Architecture
+
+```text
+                                    AIS TELEMETRY
+                                           │
+                                           ▼
+
+                         ┌───────────────────────────────┐
+                         │ Feature Engineering Pipeline   │
+                         │ Temporal Context Construction  │
+                         └──────────────┬────────────────┘
+                                        │
+                                        ▼
+
+                         ┌───────────────────────────────┐
+                         │ Transformer Masked            │
+                         │ Autoencoder Encoder           │
+                         └──────────────┬────────────────┘
+                                        │
+                  ┌─────────────────────┴─────────────────────┐
+                  │                                           │
+                  ▼                                           ▼
+
+     ┌─────────────────────────┐             ┌────────────────────────┐
+     │ Latent Embedding Space  │             │ Reconstruction Error   │
+     │ 128-D Behavioral Vector │             │ Behavioral Divergence  │
+     └─────────────┬───────────┘             └───────────┬────────────┘
+                   │                                     │
+                   ▼                                     │
+
+     ┌─────────────────────────┐                         │
+     │ HNSW Retrieval Engine   │                         │
+     │ Historical Neighbors    │                         │
+     └─────────────┬───────────┘                         │
+                   │                                     │
+                   └──────────────┬──────────────────────┘
+                                  ▼
+
+                   ┌─────────────────────────────┐
+                   │ Contextual Risk Fusion       │
+                   │ Dual Channel Detector        │
+                   └──────────────┬──────────────┘
+                                  ▼
+
+                   ┌─────────────────────────────┐
+                   │ Explainability Engine        │
+                   │ Counterfactual Validation    │
+                   │ Threat Classification        │
+                   └──────────────┬──────────────┘
+                                  ▼
+
+                     Tactical Intelligence Dashboard
+```
+
+---
+
+# Core Innovations
+
+## 1. Retrieval-Augmented Anomaly Detection
+
+Most anomaly detection systems rely exclusively on reconstruction error.
+
+NaviSight introduces a second reasoning pathway:
+
+```text
+Behavior
+      ↓
+Embedding
+      ↓
+Nearest Historical Neighbors
+      ↓
+Contextual Similarity Analysis
+```
+
+This allows the platform to ask:
+
+> "Has a vessel like this behaved similarly before?"
+
+before escalating risk.
+
+The retrieval layer reduces false positives while improving explainability.
+
+---
+
+## 2. Behavioral Memory Through HNSW Retrieval
+
+Historical vessel trajectories are indexed using:
+
+### Hierarchical Navigable Small World Graphs (HNSW)
+
+Benefits:
+
+* Sub-linear retrieval complexity
+* Real-time similarity search
+* Fleet-scale behavioral memory
+* Explainable anomaly reasoning
+
+Each trajectory is transformed into a compact latent representation and stored inside cohort-aware retrieval graphs.
+
+---
+
+## 3. Counterfactual Maritime Simulation
+
+One of the most unique components of NaviSight.
+
+The platform can generate adversarial trajectory variants and evaluate detector robustness.
+
+Supported simulations include:
+
+### Covert Loitering
+
+Circular holding patterns near operational zones.
+
+### Dead Reckoning Drift
+
+Autoregressive deceptive navigation paths.
+
+### Coastal Creep
+
+Shoreline-constrained stealth movement.
+
+```text
+Observed Track
+      ↓
+Counterfactual Generator
+      ↓
+Alternative Trajectory
+      ↓
+Detector Re-Evaluation
+```
+
+This provides a form of behavioral stress testing rarely found in anomaly detection systems.
+
+---
+
+## 4. Explainable Intelligence Layer
+
+Instead of producing only a risk score, NaviSight identifies:
+
+* Primary anomaly drivers
+* Historical behavioral matches
+* Similarity confidence
+* Environmental context
+
+Example:
+
+```text
+Risk Score: 0.84
+
+Top Contributors:
+ • Heading Volatility
+ • Coastal Proximity
+ • Speed Irregularity
+
+Nearest Historical Match:
+ Vessel #384719
+ Similarity: 92.4%
+```
+
+---
+
+# Model Card
+
+## Model Name
+
+NaviSight Maritime Behavioral Encoder
+
+---
+
+## Model Type
+
+Transformer Masked Autoencoder (MAE)
+
+---
+
+## Objective
+
+Learn latent vessel behavior representations from AIS trajectories.
+
+---
+
+## Input
+
+Temporal vessel sequences containing:
+
+* Latitude
+* Longitude
+* Speed Over Ground
+* Course Over Ground
+* Heading
+* Distance to Coast
+* Distance to Terminal
+* Harbor Proximity
+* Derived kinematic features
+
+---
+
+## Output
+
+### Embedding
+
+```text
+128-dimensional behavioral vector
+```
+
+### Reconstruction
+
+```text
+Sequence reconstruction error
+```
+
+### Risk Signals
+
+```text
+Behavioral anomaly indicators
+```
+
+---
+
+## Intended Use
+
+* Maritime anomaly detection
+* Behavioral similarity search
+* Route profiling
+* Fleet intelligence
+* Research experimentation
+
+---
+
+## Not Intended For
+
+* Autonomous navigation
+* Collision avoidance
+* Operational maritime enforcement
+* Safety-critical decision systems
+
+without additional validation.
+
+---
+
+# Engineering Challenges Solved
+
+## Challenge 1
+
+### Behavioral Similarity at Scale
+
+Problem:
+
+Millions of trajectory windows create retrieval bottlenecks.
+
+Solution:
+
+Implemented HNSW-based ANN retrieval with cohort-gated search spaces.
+
+Result:
+
+Near-real-time similarity retrieval.
+
+---
+
+## Challenge 2
+
+### Geospatial Context Integration
+
+Problem:
+
+Raw coordinates provide limited behavioral meaning.
+
+Solution:
+
+Added environmental intelligence features:
+
+* Coast distance
+* Harbor proximity
+* Terminal proximity
+* Route context
+
+Result:
+
+Context-aware anomaly reasoning.
+
+---
+
+## Challenge 3
+
+### Explainability for Deep Models
+
+Problem:
+
+Autoencoders often behave like black boxes.
+
+Solution:
+
+Built:
+
+* Feature attribution layers
+* Historical retrieval explanations
+* Behavioral peer comparisons
+
+Result:
+
+Operational transparency.
+
+---
+
+## Challenge 4
+
+### Validation Beyond Benchmarks
+
+Problem:
+
+Traditional metrics fail to evaluate detector robustness.
+
+Solution:
+
+Created a synthetic adversarial trajectory engine.
+
+Result:
+
+Stress testing under realistic deceptive behaviors.
+
+---
+
+# Repository Structure
+
+```text
+navisight/
+│
+├── configs/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   ├── embeddings/
+│   └── metadata/
+│
+├── models/
+│   ├── checkpoints/
+│   └── state/
+│
+├── navisight/
+│   ├── pipeline/
+│   │
+│   ├── feature_registry/
+│   ├── preprocessing/
+│   ├── embeddings/
+│   ├── training/
+│   ├── inference/
+│   ├── evaluation/
+│   ├── retrieval/
+│   ├── simulation/
+│   └── visualization/
+│
+├── scripts/
+│   ├── train.py
+│   ├── build_embeddings.py
+│   ├── build_ann_index.py
+│   ├── evaluate.py
+│   └── view_validation_dashboard.py
+│
+└── README.md
+```
+
+---
+
+# Validation Dashboard
+
+The operational dashboard provides:
+
+### Tactical Navigation View
+
+Interactive vessel route visualization.
+
+### Threat Assessment
+
+Real-time anomaly scoring.
+
+### Behavioral Analytics
+
+Speed and heading analysis.
+
+### Historical Retrieval
+
+Nearest-neighbor explainability.
+
+### Counterfactual Comparison
+
+Observed vs adversarial behavior.
+
+### Environmental Context
+
+Coastline and terminal intelligence.
+
+---
+
+# Future Research Directions
+
+## Multi-Agent Maritime Intelligence
+
+Model interactions between fleets rather than individual vessels.
+
+## Graph Neural Networks
+
+Learn vessel relationships directly.
+
+## Foundation Models for AIS
+
+Large-scale self-supervised trajectory learning.
+
+## Satellite + AIS Fusion
+
+Combine behavioral and visual intelligence.
+
+## Online Continual Learning
+
+Adaptive behavior modeling in dynamic environments.
+
+---
+
+# Lessons Learned
+
+NaviSight taught me that anomaly detection is rarely about identifying outliers.
+
+The harder problem is determining whether an unusual behavior is genuinely meaningful.
+
+This project explores how retrieval systems, representation learning, simulation environments, and explainability can work together to move anomaly detection closer to behavioral intelligence.
+
+---
+
+## Author
+
+**Anil Kumar Korupoju**
+
+AI Engineer | Machine Learning Engineer | Distributed Systems Enthusiast
+
+Building systems at the intersection of:
+
+* Machine Learning
+* Retrieval Architectures
+* Simulation Systems
+* Explainable AI
+* Large-Scale Data Platforms
