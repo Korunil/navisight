@@ -6,7 +6,7 @@
 ██║ ╚████║██║  ██║ ╚████╔╝ ██║███████║██║╚██████╔╝██║  ██║   ██║
 ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝
 
-
+<div>
 **Contextual Spatiotemporal Foundation Model Platform for Maritime Anomaly Intelligence** 
 *Piraeus Operational Corridor Dataset · 2017–2019 · Out-of-Core Processing Stream*
 
