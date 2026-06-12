@@ -663,6 +663,258 @@ This project explores how retrieval systems, representation learning, simulation
 
 ---
 
+```mermaid
+flowchart TB
+
+    %% =====================================================
+    %% DATA LAYER
+    %% =====================================================
+
+    subgraph DATALAKE["AIS Data Lakehouse"]
+        A1[Raw AIS Messages]
+        A2[Trajectory Partitions]
+        A3[Parquet Feature Store]
+    end
+
+    %% =====================================================
+    %% FEATURE ENGINEERING
+    %% =====================================================
+
+    subgraph FEATURES["Feature Engineering Pipeline"]
+        B1[Trajectory Cleaning]
+        B2[Coordinate Normalization]
+        B3[Kinematic Features]
+        B4[Environmental Features]
+        B5[Feature Registry]
+    end
+
+    %% =====================================================
+    %% TRAINING
+    %% =====================================================
+
+    subgraph TRAINING["Self-Supervised Training"]
+        C1[Masked Autoencoder]
+        C2[Transformer Encoder]
+        C3[Latent Embeddings 128D]
+        C4[Checkpoint Manager]
+    end
+
+    %% =====================================================
+    %% VECTOR MEMORY
+    %% =====================================================
+
+    subgraph MEMORY["Behavior Memory Layer"]
+        D1[Embedding Shards]
+        D2[HNSW Index]
+        D3[Cohort Gating]
+        D4[SQLite Metadata Registry]
+    end
+
+    %% =====================================================
+    %% PROFILE ENGINE
+    %% =====================================================
+
+    subgraph PROFILE["Behavior Profiling"]
+        E1[Rolling Behavior Engine]
+        E2[Adaptive Baselines]
+        E3[Temporal Context]
+    end
+
+    %% =====================================================
+    %% DETECTION ENGINE
+    %% =====================================================
+
+    subgraph DETECTION["Contextual Dual Channel Detector"]
+        F1[Reconstruction Channel]
+        F2[Behavior Similarity Channel]
+        F3[Risk Fusion Engine]
+        F4[Anomaly Classification]
+    end
+
+    %% =====================================================
+    %% VALIDATION
+    %% =====================================================
+
+    subgraph VALIDATION["Synthetic Validation Framework"]
+        G1[Loitering Injection]
+        G2[Dead Reckoning Drift]
+        G3[Coastal Creep]
+        G4[Counterfactual Evaluation]
+    end
+
+    %% =====================================================
+    %% VISUALIZATION
+    %% =====================================================
+
+    subgraph UI["Tactical Intelligence Dashboard"]
+        H1[Interactive Map]
+        H2[Risk Gauges]
+        H3[Behavior Analytics]
+        H4[Nearest Neighbor Explainability]
+        H5[Environmental Context]
+    end
+
+    %% =====================================================
+    %% FLOW
+    %% =====================================================
+
+    A1 --> A2
+    A2 --> A3
+
+    A3 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+
+    B5 --> C1
+    C1 --> C2
+    C2 --> C3
+    C3 --> C4
+
+    C3 --> D1
+    D1 --> D2
+    D2 --> D3
+    D3 --> D4
+
+    B5 --> E1
+    E1 --> E2
+    E2 --> E3
+
+    C4 --> F1
+    D2 --> F2
+    E3 --> F3
+
+    F1 --> F3
+    F2 --> F3
+
+    F3 --> F4
+
+    B5 --> G1
+    G1 --> G2
+    G2 --> G3
+    G3 --> G4
+
+    G4 --> F4
+
+    F4 --> H1
+    F4 --> H2
+    F4 --> H3
+
+    D2 --> H4
+
+    B4 --> H5
+```
+---
+
+```mermaid
+flowchart LR
+
+    A[AIS Vessel Data]
+    B[Feature Engineering]
+    C[Masked Autoencoder]
+    D[128D Latent Space]
+    E[HNSW Behavioral Memory]
+    F[Rolling Behavior Profile]
+    G[Dual-Channel Risk Engine]
+    H[Anomaly Detection]
+    I[Tactical Dashboard]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    B --> F
+
+    E --> G
+    F --> G
+    D --> G
+
+    G --> H
+    H --> I
+```
+
+---
+
+```mermaid
+flowchart TB
+
+    A[Input Sequence<br/>119 Timesteps]
+
+    B[Feature Projection]
+
+    C[Masked Autoencoder]
+
+    D[Transformer Encoder]
+
+    E[CLS Token]
+
+    F[128D Latent Embedding]
+
+    G[Decoder Reconstruction]
+
+    H[Reconstruction Error]
+
+    I[Behavior Neighborhood Search]
+
+    J[Risk Fusion]
+
+    K[Anomaly Score]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+
+    F --> G
+    G --> H
+
+    F --> I
+
+    H --> J
+    I --> J
+
+    J --> K
+```
+
+---
+
+```mermaid
+flowchart LR
+
+    A[Observed Vessel Route]
+
+    B[Loitering Generator]
+
+    C[Dead Reckoning Drift]
+
+    D[Coastal Creep]
+
+    E[Synthetic Counterfactual Routes]
+
+    F[Dual Channel Detector]
+
+    G[Risk Delta Analysis]
+
+    A --> B
+    A --> C
+    A --> D
+
+    B --> E
+    C --> E
+    D --> E
+
+    E --> F
+
+    A --> F
+
+    F --> G
+```
+
+---
+
 ## Author
 
 **Anil Kumar Korupoju**
