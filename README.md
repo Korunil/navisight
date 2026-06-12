@@ -125,16 +125,16 @@ pip install polars pyarrow xxhash hnswlib torch streamlit plotly-express
 ### Execution Lifecycles
 
 ```bash
-# 1. Extract cohort-stratified normalization statistics 
+# Step 1: Run the stats compiler to initialize the new geospatial center-scale metrics
 python scripts/compute_global_stats.py
 
-# 2. Ingest raw AIS logs, compile weather overlays, and generate parquet shards
-python scripts/run_pipeline.py
+# Step 2: Stream and resample raw telemetry onto the fixed 30s cubic-spline raster grid
+python scripts/train_pipeline.py
 
-# 3. Launch the self-supervised pre-training loop
-python -m navisight.engine.train_model
+# Step 3: Run out-of-core extraction to populate the class-segregated HNSW sub-graphs
+python scripts/eval_pipeline.py
 
-# 4. Spin up the tactical real-time UI dashboard console
+# Step 4: Spin up the simplified, model-driven tactical visual command center
 streamlit run scripts/view_validation_dashboard.py
 
 ```
@@ -142,9 +142,7 @@ streamlit run scripts/view_validation_dashboard.py
 ---
 
 ## ── Reference License ──
-
-Distributed under the Apache 2.0 Research & Production Engineering License Contract. Engineered for enterprise-grade spatiotemporal world model infrastructure.
-
 ```
+Distributed under the Apache 2.0 Research & Production Engineering License Contract. Engineered for enterprise-grade spatiotemporal world model infrastructure.
 
 ```
