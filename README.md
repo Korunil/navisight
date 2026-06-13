@@ -18,7 +18,33 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 </div>
 
 ---
+# Executive Summary
 
+NaviSight is a behavioral intelligence platform for maritime anomaly detection built around self-supervised representation learning.
+
+The system transforms raw AIS telemetry into latent behavioral embeddings using a Masked Autoencoder Transformer and detects anomalous activity through cohort-aware similarity search, behavioral profiling, and contextual risk fusion.
+
+The architecture was designed to answer a fundamental question:
+
+> Can vessel behavior itself become the primary signal for maritime threat detection?
+
+Rather than relying on manually engineered rules, NaviSight learns behavioral manifolds directly from historical trajectories and identifies deviations in latent space.
+
+The platform combines:
+
+- Self-Supervised Transformers
+- Geospatial Feature Engineering
+- Behavioral Embedding Learning
+- HNSW Similarity Search
+- Rolling Profile Modeling
+- Counterfactual Threat Simulation
+- Explainable Risk Attribution
+
+into a unified operational intelligence system.
+
+The result is a framework capable of detecting subtle behavioral anomalies that would remain invisible to threshold-based monitoring systems.
+
+---
 ## Overview
 
 NaviSight is an end-to-end maritime behavioral intelligence platform that learns latent vessel behavior directly from AIS telemetry and detects anomalous activity using self-supervised representation learning, cohort-aware similarity search, rolling behavioral profiling, and contextual risk fusion.
@@ -172,13 +198,11 @@ E --> G[Rolling Behavioral Profiles]
 
 F --> H[Dual Channel Detector]
 
-G --> H
+G --> H[Risk Fusion Engine]
 
-H --> I[Risk Fusion Engine]
+H --> I[Counterfactual Threat Simulator]
 
-I --> J[Counterfactual Threat Simulator]
-
-J --> K[Tactical Intelligence Dashboard]
+I --> J[Tactical Intelligence Dashboard]
 ```
 
 ---
@@ -243,7 +267,31 @@ Benefits:
 
 ---
 
-# Model Card
+# Model Card v1.0
+
+## Model Name
+
+NaviSight Maritime Behavioral Encoder
+
+---
+
+## Version
+
+v1.0
+
+---
+
+## Model Type
+
+Masked Autoencoder Transformer
+
+---
+
+## Objective
+
+Learn vessel behavioral representations from AIS trajectories.
+
+---
 
 ## Model Overview
 
@@ -260,20 +308,18 @@ Benefits:
 
 ## Inputs
 
-Examples:
+119-step telemetry sequences.
 
-- Latitude
-- Longitude
-- Speed Over Ground
-- Course Over Ground
-- Heading
-- Turn Rate
-- Velocity Components
-- Distance To Coast
-- Terminal Distance
-- Harbor Basin Proximity
+Features include:
 
-and dozens of engineered contextual features.
+- position
+- velocity
+- heading
+- turn rate
+- harbor proximity
+- coast distance
+- terminal distance
+- derived motion features
 
 ---
 
@@ -308,6 +354,20 @@ CRITICAL
 - Threat Assessment
 - Behavioral Clustering
 - Operational Monitoring
+
+---
+
+## Intended Use
+
+Operational maritime intelligence.
+
+---
+
+## Limitations
+
+- dependent on AIS quality
+- vulnerable to missing transmissions
+- limited environmental context
 
 ---
 
@@ -566,6 +626,10 @@ assets/
 ├── dashboard_risk.png
 ├── dashboard_similarity.png
 ```
+---
+# Tactical Intelligence Hub
+
+![Dashboard Demo](assets/navisight_demo.gif)
 
 ---
 
@@ -673,7 +737,120 @@ streamlit run scripts/view_validation_dashboard.py
 ```
 
 ---
+# Engineering Tradeoffs
 
+## Why HNSW Instead of FAISS IVF?
+
+### HNSW Advantages
+
+- lower retrieval latency
+- excellent recall
+- dynamic insertions
+
+### Tradeoff
+
+Higher memory consumption.
+
+Decision:
+
+Prioritized retrieval quality and operational latency.
+
+---
+
+## Why Self-Supervised Learning?
+
+### Advantages
+
+- minimal labeling requirements
+- better scalability
+
+### Tradeoff
+
+Interpretability challenges.
+
+Decision:
+
+Added explainability layers through similarity retrieval and feature attribution.
+
+---
+
+# Design Decisions
+
+## Decision #1
+
+Behavior First, Rules Second
+
+Traditional systems:
+
+Rule → Alert
+
+NaviSight:
+
+Behavior → Embedding → Risk
+
+---
+
+## Decision #2
+
+Cohort-Aware Similarity
+
+Rejected:
+
+Global vessel comparisons.
+
+Implemented:
+
+Superclass-isolated HNSW indices.
+
+Reason:
+
+Different vessel classes exhibit fundamentally different movement patterns.
+
+---
+
+## Decision #3
+
+Explainability as a First-Class Citizen
+
+Every anomaly score must be traceable through:
+
+- nearest neighbors
+- feature attribution
+- counterfactual simulation
+
+
+---
+# Lessons Learned Building NaviSight
+
+### 1. Data Engineering Matters More Than Models
+
+Most gains came from improving trajectory quality rather than increasing model complexity.
+
+---
+
+### 2. Similarity Search Is Surprisingly Powerful
+
+Many anomalies become obvious when viewed through behavioral neighbors.
+
+---
+
+### 3. Explainability Cannot Be Added Later
+
+Operational users require trust before they accept anomaly alerts.
+
+---
+
+### 4. Synthetic Scenarios Are Essential
+
+Counterfactual simulation revealed failure modes that traditional evaluation never exposed.
+
+---
+
+### 5. Maritime Behavior Is Highly Contextual
+
+The same trajectory may be normal for one vessel class and anomalous for another.
+
+---
 # Example Workflow
 
 ```text
@@ -708,12 +885,19 @@ Dashboard Visualization
 - Multi-Vessel Interaction Modeling
 - Online Learning
 - Satellite Data Fusion
-- Weather Integration
 - Global Traffic Forecasting
 - Streaming Inference
 - Distributed HNSW Infrastructure
 - Explainable Attention Maps
 - Real-Time Alerting
+
+### Target use cases:
+
+- Maritime Security
+- Illegal Fishing Detection
+- Port Intelligence
+- Offshore Asset Monitoring
+- Trade Route Analysis
 
 ---
 
