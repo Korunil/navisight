@@ -13,6 +13,11 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 ![HNSW](https://img.shields.io/badge/HNSW-ANN_Search-green)
 ![Transformers](https://img.shields.io/badge/Transformer-Masked_Autoencoder-blueviolet)
 ![AIS](https://img.shields.io/badge/AIS-Maritime_Intelligence-navy)
+![Research Prototype](https://img.shields.io/badge/Research-Prototype-blue)
+![Self-Supervised Learning](https://img.shields.io/badge/SSL-Transformer-green)
+![Behavioral AI](https://img.shields.io/badge/Behavioral-Intelligence-orange)
+![Maritime AI](https://img.shields.io/badge/Maritime-AI-blueviolet)
+![Explainable AI](https://img.shields.io/badge/XAI-Enabled-red)
 ![License](https://img.shields.io/badge/License-Apache_2.0-red)
 
 </div>
@@ -43,6 +48,16 @@ The platform combines:
 into a unified operational intelligence system.
 
 The result is a framework capable of detecting subtle behavioral anomalies that would remain invisible to threshold-based monitoring systems.
+
+---
+
+# Mission
+
+NaviSight exists to transform maritime monitoring from rule-based alerting into behavioral intelligence.
+
+The long-term objective is to build systems capable of understanding how vessels behave, not simply where they are.
+
+By learning latent behavioral patterns directly from telemetry, NaviSight aims to enable earlier detection of emerging maritime threats while reducing analyst workload.
 
 ---
 ## Overview
