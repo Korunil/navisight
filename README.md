@@ -132,7 +132,9 @@ The dataset captures vessel movement behavior at scale and serves as the foundat
 
 ---
 
-## Dataset Statistics
+## Exploratory Dataset Statistics (Month Sample - September 2018)
+
+The following statistics correspond to a one-month AIS telemetry snapshot used for exploratory analysis, feature validation, and data quality assessment.
 
 | Attribute | Value |
 |------------|---------|
