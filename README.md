@@ -122,6 +122,258 @@ Rather than relying on fixed thresholds, NaviSight learns normal vessel behavior
 
 ---
 
+# 📊 Dataset & Data Engineering
+
+## AIS Maritime Telemetry Corpus
+
+NaviSight is trained on large-scale Automatic Identification System (AIS) telemetry collected from commercial maritime traffic operating within the Eastern Mediterranean maritime domain.
+
+The dataset captures vessel movement behavior at scale and serves as the foundation for self-supervised behavioral representation learning.
+
+---
+
+## Dataset Statistics
+
+| Attribute | Value |
+|------------|---------|
+| AIS Observations | **13,813,130+** |
+| Geographic Region | Eastern Mediterranean |
+| Coverage Area | Piraeus Maritime Domain |
+| Data Type | Vessel Telemetry |
+| Learning Paradigm | Self-Supervised |
+| Sequence Length | 119 Steps |
+| Engineered Features | 41 |
+| Embedding Dimension | 128 |
+| Storage Format | Partitioned Parquet |
+| Inference Backend | PyTorch |
+
+> Dataset statistics generated from exploratory profiling and validation pipelines.
+
+---
+
+## AIS Signals
+
+Raw vessel telemetry includes:
+
+- Latitude
+- Longitude
+- Speed Over Ground (SOG)
+- Course Over Ground (COG)
+- Heading
+- Navigation Status
+- Timestamp
+- Vessel Metadata
+- Voyage Context
+
+These signals are transformed into a high-dimensional behavioral representation through extensive feature engineering.
+
+---
+
+## Geospatial Intelligence Layer
+
+NaviSight augments vessel telemetry with operational maritime context.
+
+Derived geospatial features include:
+
+- Distance to Coast
+- Distance to Port
+- Distance to Terminal
+- Harbor Proximity
+- Land Ingress Detection
+- Voyage Phase Indicators
+- Spatial Density Features
+- Regional Context Encoding
+
+This enables the model to reason not only about vessel motion but also about environmental and operational conditions.
+
+---
+
+## Meteorological Intelligence Layer
+
+To model vessel behavior under realistic operating conditions, AIS trajectories are fused with spatiotemporal weather data.
+
+---
+
+### Weather Dataset Statistics
+
+| Attribute | Value |
+|------------|---------|
+| Records | 10,800 |
+| Temporal Coverage | September 2018 |
+| Time Resolution | 3-Hour Intervals |
+| Spatial Representation | Rectilinear Grid |
+| Weather Variables | 18 |
+| Interpolation Strategy | Trilinear Spatiotemporal Interpolation |
+
+---
+
+### Weather Variables
+
+NaviSight incorporates:
+
+| Variable | Description |
+|-----------|-------------|
+| TMP | Temperature |
+| RH | Relative Humidity |
+| PRMSL | Mean Sea Level Pressure |
+| VIS | Visibility |
+| WSPD | Wind Speed |
+| GUST | Wind Gust |
+| UGRD | Zonal Wind Component |
+| VGRD | Meridional Wind Component |
+| DPT | Dew Point |
+| APCP | Accumulated Precipitation |
+
+---
+
+### Environmental Feature Derivation
+
+Weather observations are transformed into vessel-centric behavioral features:
+
+- Headwind Component
+- Crosswind Component
+- Environmental Resistance
+- Visibility Exposure
+- Weather Severity Indicators
+- Atmospheric Stability Signals
+
+This allows the behavioral encoder to distinguish operational behavior from weather-driven motion changes.
+
+---
+
+# 🧠 Feature Engineering Pipeline
+
+```text
+Raw AIS Telemetry
+        │
+        ▼
+
+Trajectory Cleaning
+        │
+        ▼
+
+Voyage Segmentation
+        │
+        ▼
+
+Kinematic Feature Extraction
+        │
+        ├── Speed
+        ├── Acceleration
+        ├── Turn Rate
+        ├── Jerk
+        └── Heading Dynamics
+
+        ▼
+
+Geospatial Enrichment
+        │
+        ├── Port Distance
+        ├── Coast Distance
+        ├── Harbor Features
+        └── Terminal Context
+
+        ▼
+
+Weather Fusion
+        │
+        ├── Wind Speed
+        ├── Gusts
+        ├── Visibility
+        ├── Pressure
+        └── Humidity
+
+        ▼
+
+Temporal Context Encoding
+        │
+        ├── Hour-of-Day
+        ├── Day-of-Week
+        └── Voyage Phase
+
+        ▼
+
+41-Dimensional Feature Space
+```
+
+---
+
+# 📈 Training Corpus Construction
+
+```text
+13.8M+ AIS Observations
+          │
+          ▼
+
+Trajectory Segmentation
+          │
+          ▼
+
+Window Generation
+          │
+          ▼
+
+119-Step Sequences
+          │
+          ▼
+
+Masked Token Corruption
+          │
+          ▼
+
+Self-Supervised Training
+          │
+          ▼
+
+Transformer Encoder
+          │
+          ▼
+
+128-D Behavioral Embeddings
+```
+
+---
+
+## Feature Registry Summary
+
+NaviSight's feature registry currently spans four primary domains:
+
+| Category | Purpose |
+|-----------|---------|
+| Kinematic Features | Vessel motion dynamics |
+| Geospatial Features | Environmental context |
+| Weather Features | Operational conditions |
+| Quality-Control Features | Data reliability signals |
+
+This multimodal representation enables the system to learn behavioral manifolds rather than relying solely on trajectory geometry.
+
+---
+
+## Why the Dataset Matters
+
+Most maritime anomaly detection systems focus exclusively on:
+
+- positional tracks
+- speed thresholds
+- geofencing rules
+
+NaviSight instead learns from a richer behavioral state space combining:
+
+```text
+Movement
+      +
+Environment
+      +
+Weather
+      +
+Context
+      +
+Historical Behavior
+```
+
+This enables detection of subtle anomalies that may remain invisible to traditional rule-based monitoring systems.
+
+---
 # Key Capabilities
 
 ### Behavioral Representation Learning
