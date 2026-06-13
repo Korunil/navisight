@@ -622,9 +622,11 @@ Displays:
 ```text
 assets/
 ├── dashboard_overview.png
-├── dashboard_map.png
-├── dashboard_risk.png
-├── dashboard_similarity.png
+├── dashboard_clc.png                # Coverted Loitering Circle
+├── dashboard_add.png                # AR(1) Deception Drift
+├── dashboard_ctc.png                # Constrained Topological Creep
+├── dashboard_analytics.png
+├── navisight_architecture.png
 ```
 ---
 # Tactical Intelligence Hub
