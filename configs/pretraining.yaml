@@ -1,0 +1,45 @@
+# configs/pretraining.yaml
+experiment:
+  name: "piraeus_foundation_v1"
+  description: "Full MAE pretraining on Piraeus AIS with 128d latent space."
+  seed: 42
+  schema_version: "v1.2.0"
+
+data:
+  window_size: 30       # Lower to 30. (30 minutes of kinematics is plenty for behavior)
+  stride_train: 10      # Higher overlap = more sequence windows generated
+  stride_inference: 15
+  batch_size: 256       # Maximize GPU utilization
+  num_workers: 4
+  phase_balanced_sampling: true # Crucial for real training
+
+model:
+  d_model: 128          # Full representation space
+  n_heads: 8
+  n_layers: 4           # Deep enough to learn behavior, shallow enough to run fast
+  dim_feedforward: 512
+  dropout: 0.1
+  projector:
+    phys_out: 80
+    ctx_out: 32
+    qual_out: 16
+
+masking:
+  strategy: "random"
+  mask_ratio: 0.15
+
+optimization:
+  epochs: 30            # The real training run
+  lr: 0.0001
+  weight_decay: 0.00001
+  clip_grad_norm: 1.0
+
+diagnostics:
+  monitor_effective_rank: true
+  min_effective_rank_threshold: 15.0
+  monitor_attention_entropy: false
+
+checkpointing:
+  save_dir: "models/checkpoints/"
+  save_top_k: 3
+  monitor_metric: "physics_mse"

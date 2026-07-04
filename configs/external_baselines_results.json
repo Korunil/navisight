@@ -1,0 +1,22 @@
+{
+    "isolation_forest": {
+        "auroc": 0.6252,
+        "auprc": 0.5832,
+        "frozen_test_f1": 0.6703
+    },
+    "one_class_svm": {
+        "auroc": 0.5007,
+        "auprc": 0.5082,
+        "frozen_test_f1": 0.6667
+    },
+    "local_outlier_factor": {
+        "auroc": 0.5431,
+        "auprc": 0.5305,
+        "frozen_test_f1": 0.6667
+    },
+    "lstm_autoencoder": {
+        "auroc": 0.5617,
+        "auprc": 0.5506,
+        "frozen_test_f1": 0.6788
+    }
+}

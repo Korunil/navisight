@@ -1,0 +1,46 @@
+experiment:
+  name: "dry_run_v1"
+  description: "End-to-end pipeline integrity test with full model dimensions."
+  seed: 42
+  schema_version: "v1.14.0"
+
+data:
+  window_size: 60        # Restored to production length to prevent batch-starvation
+  stride_train: 30
+  stride_inference: 15
+  batch_size: 16         # Kept tiny for quick local iteration
+  num_workers: 0         # Disabled for easy step-by-step debugger tracing
+  phase_balanced_sampling: false
+
+model:
+  d_model: 128           # RESTORED: Locks into the true foundation model width
+  n_heads: 8             # RESTORED: Full multi-head attention complexity
+  n_layers: 4            # RESTORED: Full depth
+  dim_feedforward: 512
+  dropout: 0.1
+  projector:
+    phys_out: 64         # RESTORED: Structural dimensions now sum
+    weather_out: 24      # exactly to d_model = 128 across all 
+    ctx_out: 24          # four physical data modalities
+    qual_out: 16
+
+masking:
+  strategy: "random"
+  mask_ratio: 0.40       # Using the optimized masking threshold
+
+optimization:
+  epochs: 1              # Switched to exactly 1 epoch for a rapid execution test
+  lr: 0.0001
+  weight_decay: 0.01
+  clip_grad_norm: 1.0
+
+diagnostics:
+  monitor_effective_rank: true
+  min_effective_rank_threshold: 1.0
+  monitor_attention_entropy: false
+  log_interval_steps: 10
+
+checkpointing:
+  save_dir: "models/checkpoints/"
+  save_top_k: 1
+  monitor_metric: "physics_mse"

@@ -1,0 +1,52 @@
+/* dashboard/styles/dashboard.css */
+.intel-card {
+    background: rgba(128, 128, 128, 0.06);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8892b0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+}
+
+.card-value { 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+}
+
+.card-title-accent {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #38BDF8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    padding-bottom: 6px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+.profile-row:last-child { border-bottom: none; }
+.profile-label { font-size: 0.82rem; font-weight: 500; opacity: 0.8; }
+.profile-value { font-size: 0.82rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+
+.production-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.production-table th {
+    text-align: left; padding: 10px; font-size: 0.8rem; color: #8892b0;
+    text-transform: uppercase; border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.production-table td { padding: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(128, 128, 128, 0.15); }
