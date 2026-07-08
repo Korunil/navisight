@@ -26,7 +26,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 # Table of Contents
 
-- [Executive Summary](#-executive-summary)
+- [Executive Summary](#executive-summary)
 - Research Results
 - Associated Publication
 - Mission
