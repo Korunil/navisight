@@ -23,6 +23,46 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 </div>
 
 ---
+
+# Table of Contents
+
+- Executive Summary
+- Research Results
+- Associated Publication
+- Mission
+- Overview
+- Why NaviSight Matters
+- Dataset & Data Engineering
+  - AIS Maritime Telemetry Corpus
+  - Geospatial Intelligence Layer
+  - Meteorological Intelligence Layer
+- Feature Engineering Pipeline
+- Training Corpus Construction
+- Key Capabilities
+- Architecture
+- Research Contributions
+- NAVISIGHT Methodology
+- Model Card
+- Evaluation Framework
+- Mathematical Foundations
+- Engineering Challenges Solved
+- Behavioral Embedding Space
+- Similarity Search Engine
+- Counterfactual Threat Simulation
+- Dashboard Preview
+- Repository Structure
+- System Metrics
+- Technology Stack
+- Quick Start
+- Engineering Tradeoffs
+- Design Decisions
+- Lessons Learned
+- Future Work
+- Contributing
+- License
+- Author
+
+---
 # Executive Summary
 
 NaviSight is a behavioral intelligence platform for maritime anomaly detection built around self-supervised representation learning.
@@ -50,6 +90,26 @@ into a unified operational intelligence system.
 The result is a framework capable of detecting subtle behavioral anomalies that would remain invisible to threshold-based monitoring systems.
 
 ---
+# Research Results
+
+NAVISIGHT was evaluated on approximately 192 million AIS observations
+from the Aegean Sea.
+
+Key results:
+
+| Detection Channel | AUROC |
+|-------------------|--------|
+| Isolation Forest | 0.6252 |
+| One-Class SVM | 0.5007 |
+| LOF | 0.5431 |
+| LSTM AutoEncoder | 0.5617 |
+| Reconstruction | 0.8737 |
+| Behavioural Manifold | 0.9309 |
+| OR Fusion | 0.9247 |
+
+Evaluation followed a strictly chronological train-calibration-test protocol.
+
+---
 
 # Mission
 
@@ -74,13 +134,22 @@ The platform combines:
 - Rolling Vessel Behavior Profiling
 - Dual-Channel Contextual Risk Fusion
 - Counterfactual Threat Simulation
-- Explainable Threat Intelligence Dashboards
+- Explainable Anomaly Analysis Dashboard
 
 to create a modern behavioral intelligence framework for maritime anomaly detection.
 
 ---
 
 # Why NaviSight Matters
+
+NaviSight demonstrates how modern self-supervised learning,
+approximate nearest-neighbour search, geospatial analytics,
+and maritime domain knowledge can be combined into a unified
+anomaly detection framework.
+
+The project was developed as both a research contribution and
+an exploration of scalable behavioural AI for real-world
+maritime surveillance systems.
 
 More than 80% of global trade travels by sea.
 
@@ -138,14 +207,17 @@ The following statistics correspond to a one-month AIS telemetry snapshot used f
 
 | Attribute | Value |
 |------------|---------|
-| AIS Observations | **13,813,130+** |
-| Geographic Region | Eastern Mediterranean |
+| AIS Observations | **~192 Million** |
+| Calibration Windows | 309,268 |
+| Evaluation Windows | 262,287 |
+| Geographic Region | Aegean Sea |
 | Coverage Area | Piraeus Maritime Domain |
 | Data Type | Vessel Telemetry |
 | Learning Paradigm | Self-Supervised |
-| Sequence Length | 119 Steps |
-| Engineered Features | 41 |
+| Sequence Length | 60 Steps |
+| Engineered Features | 35 |
 | Embedding Dimension | 128 |
+| ANN Backend | HNSW |
 | Storage Format | Partitioned Parquet |
 | Inference Backend | PyTorch |
 
@@ -202,7 +274,7 @@ To model vessel behavior under realistic operating conditions, AIS trajectories 
 |------------|---------|
 | Records | 10,800 |
 | Temporal Coverage | September 2018 |
-| Time Resolution | 3-Hour Intervals |
+| Time Resolution | 6-Hour Intervals |
 | Spatial Representation | Rectilinear Grid |
 | Weather Variables | 18 |
 | Interpolation Strategy | Trilinear Spatiotemporal Interpolation |
@@ -303,7 +375,7 @@ Temporal Context Encoding
 # 📈 Training Corpus Construction
 
 ```text
-13.8M+ AIS Observations
+192M+ AIS Observations
           │
           ▼
 
@@ -315,7 +387,7 @@ Window Generation
           │
           ▼
 
-119-Step Sequences
+60-Step Sequences
           │
           ▼
 
@@ -441,7 +513,7 @@ Counterfactual Simulator
             │
             ▼
 
-Tactical Intelligence Hub
+Interactive Maritime Analytics Dashboard
 ```
 
 ---
@@ -473,6 +545,27 @@ H --> I[Counterfactual Threat Simulator]
 
 I --> J[Tactical Intelligence Dashboard]
 ```
+---
+
+# NaviSight Methodology
+
+Data Engineering
+     ↓
+Multimodal Feature Construction
+     ↓
+Maritime Masked Autoencoder
+     ↓
+128-D Embeddings
+     ↓
+HNSW Behavioral Memory
+     ↓
+Reconstruction Channel
++
+Behavioral Drift Channel
+     ↓
+Fusion
+     ↓
+Anomaly Detection
 
 ---
 
