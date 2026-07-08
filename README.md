@@ -900,7 +900,7 @@ assets/
 ---
 # Tactical Intelligence Hub
 
-![Dashboard Demo](assets/navisight_demo.gif)
+![Dashboard Demo](assets/dashboard_overview.png)
 
 ---
 
@@ -1004,7 +1004,7 @@ pip install -r requirements.txt
 ## Launch Dashboard
 
 ```bash
-streamlit run scripts/view_validation_dashboard.py
+streamlit run dashboard/view_validation_dashboard.py
 ```
 
 ---
