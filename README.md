@@ -26,7 +26,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 # Table of Contents
 
-- Executive Summary
+- [Executive Summary](#-executive-summary)
 - Research Results
 - Associated Publication
 - Mission
@@ -1328,6 +1328,7 @@ AI Engineer • Machine Learning Engineer • Applied AI Research Enthusiast
 Focused on:
 
 - Representation Learning
+- Self-Supervised Sequence Systems
 - RAG Systems
 - Agentic AI
 - Geospatial Intelligence
