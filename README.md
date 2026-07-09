@@ -26,41 +26,42 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 # Table of Contents
 
-- [Executive Summary](#executive-summary)
-- Research Results
-- Associated Publication
-- Mission
-- Overview
-- Why NaviSight Matters
-- Dataset & Data Engineering
-  - AIS Maritime Telemetry Corpus
-  - Geospatial Intelligence Layer
-  - Meteorological Intelligence Layer
-- Feature Engineering Pipeline
-- Training Corpus Construction
-- Key Capabilities
-- Architecture
-- Research Contributions
-- NAVISIGHT Methodology
-- Model Card
-- Evaluation Framework
-- Mathematical Foundations
-- Engineering Challenges Solved
-- Behavioral Embedding Space
-- Similarity Search Engine
-- Counterfactual Threat Simulation
-- Dashboard Preview
-- Repository Structure
-- System Metrics
-- Technology Stack
-- Quick Start
-- Engineering Tradeoffs
-- Design Decisions
-- Lessons Learned
-- Future Work
-- Contributing
-- License
-- Author
+## Table of Contents
+
+- [Research Results](#research-results)
+- [Associated Publication](#associated-publication)
+- [Mission](#mission)
+- [Overview](#overview)
+- [Why NaviSight Matters](#why-navisight-matters)
+- [Dataset & Data Engineering](#dataset--data-engineering)
+- [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
+- [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
+- [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
+- [Feature Engineering Pipeline](#feature-engineering-pipeline)
+- [Training Corpus Construction](#training-corpus-construction)
+- [Key Capabilities](#key-capabilities)
+- [Architecture](#architecture)
+- [Research Contributions](#research-contributions)
+- [NAVISIGHT Methodology](#navisight-methodology)
+- [Model Card](#model-card)
+- [Evaluation Framework](#evaluation-framework)
+- [Mathematical Foundations](#mathematical-foundations)
+- [Engineering Challenges Solved](#engineering-challenges-solved)
+- [Behavioral Embedding Space](#behavioral-embedding-space)
+- [Similarity Search Engine](#similarity-search-engine)
+- [Counterfactual Threat Simulation](#counterfactual-threat-simulation)
+- [Dashboard Preview](#dashboard-preview)
+- [Repository Structure](#repository-structure)
+- [System Metrics](#system-metrics)
+- [Technology Stack](#technology-stack)
+- [Quick Start](#quick-start)
+- [Engineering Tradeoffs](#engineering-tradeoffs)
+- [Design Decisions](#design-decisions)
+- [Lessons Learned](#lessons-learned)
+- [Future Work](#future-work)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
 
 ---
 # Executive Summary
