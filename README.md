@@ -30,6 +30,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 - [Research Results](#research-results)
 - [Associated Publication](#associated-publication)
+- [Author](#author)
 - [Mission](#mission)
 - [Overview](#overview)
 - [Why NaviSight Matters](#why-navisight-matters)
@@ -64,7 +65,6 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
-- [Author](#author)
 
 ---
 # Executive Summary
@@ -161,7 +161,7 @@ If you use NAVISIGHT in academic work, please cite:
   journal={Ocean Engineering},
   year={2026}
 }
-
+```
 ---
 
 # Mission
