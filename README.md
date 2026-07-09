@@ -34,22 +34,23 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Overview](#overview)
 - [Why NaviSight Matters](#why-navisight-matters)
 - [Dataset & Data Engineering](#dataset--data-engineering)
-- [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
-- [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
-- [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
+        - [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
+        - [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
+        - [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
 - [Feature Engineering Pipeline](#feature-engineering-pipeline)
 - [Training Corpus Construction](#training-corpus-construction)
 - [Key Capabilities](#key-capabilities)
 - [Architecture](#architecture)
-- [Research Contributions](#research-contributions)
 - [NAVISIGHT Methodology](#navisight-methodology)
-- [Model Card](#model-card)
+- [Research Contributions](#research-contributions)
+- [Model Card v1.0](#model-card-v10)
 - [Evaluation Framework](#evaluation-framework)
 - [Mathematical Foundations](#mathematical-foundations)
 - [Engineering Challenges Solved](#engineering-challenges-solved)
 - [Behavioral Embedding Space](#behavioral-embedding-space)
 - [Similarity Search Engine](#similarity-search-engine)
 - [Counterfactual Threat Simulation](#counterfactual-threat-simulation)
+- [Tactical Intelligence Hub](#tactical-intelligence-hub)
 - [Dashboard Preview](#dashboard-preview)
 - [Repository Structure](#repository-structure)
 - [System Metrics](#system-metrics)
@@ -57,10 +58,12 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Quick Start](#quick-start)
 - [Engineering Tradeoffs](#engineering-tradeoffs)
 - [Design Decisions](#design-decisions)
-- [Lessons Learned](#lessons-learned)
-- [Future Work](#future-work)
+- [Lessons Learned Building NaviSight](#lessons-learned-building-navisight)
+- [Example Workflow](#example-workflow)
+- [Academic Inspiration](#academic-inspiration)
 - [Contributing](#contributing)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 - [Author](#author)
 
 ---
@@ -112,6 +115,55 @@ Evaluation followed a strictly chronological train-calibration-test protocol.
 
 ---
 
+# Associated Publication
+
+**NAVISIGHT: A Self-Supervised Maritime Anomaly Detection Framework for AIS Trajectories**
+
+Submitted to:
+
+**Ocean Engineering**
+Special Issue:
+*Ocean-Aware Detection and Tracking in Maritime Environments*
+
+Status:
+**Under Review (2026)**
+
+The repository contains the implementation used to produce the results reported in the manuscript.
+
+---
+
+# Author
+
+### Anil Kumar Korupoju
+
+AI Engineer • Machine Learning Engineer • Applied AI Research Enthusiast
+
+Focused on:
+
+- Representation Learning
+- Self-Supervised Sequence Systems
+- RAG Systems
+- Agentic AI
+- Geospatial Intelligence
+- Large Language Models
+- Anomaly Detection
+
+---
+
+# Citation
+
+If you use NAVISIGHT in academic work, please cite:
+
+```bibtex
+@article{korupoju2026navisight,
+  title={NAVISIGHT: A Self-Supervised Maritime Anomaly Detection Framework for AIS Trajectories},
+  author={Korupoju, Anil Kumar},
+  journal={Ocean Engineering},
+  year={2026}
+}
+
+---
+
 # Mission
 
 NaviSight exists to transform maritime monitoring from rule-based alerting into behavioral intelligence.
@@ -121,7 +173,7 @@ The long-term objective is to build systems capable of understanding how vessels
 By learning latent behavioral patterns directly from telemetry, NaviSight aims to enable earlier detection of emerging maritime threats while reducing analyst workload.
 
 ---
-## Overview
+# Overview
 
 NaviSight is an end-to-end maritime behavioral intelligence platform that learns latent vessel behavior directly from AIS telemetry and detects anomalous activity using self-supervised representation learning, cohort-aware similarity search, rolling behavioral profiling, and contextual risk fusion.
 
@@ -189,6 +241,36 @@ NaviSight asks:
 This shifts anomaly detection from rule matching to behavioral intelligence.
 
 Rather than relying on fixed thresholds, NaviSight learns normal vessel behavior directly from historical trajectories and identifies subtle deviations that may indicate emerging threats.
+
+## Scale of the Study
+
+| Statistic | Value |
+|------------|---------|
+| AIS Records | ~192 Million |
+| Evaluation Windows | 262,287 |
+| Calibration Windows | 309,268 |
+| Transformer Forward Passes | 833,000+ |
+| Embedding Dimension | 128 |
+| ANN Backend | HNSW |
+| Feature Count | 35 |
+
+## Reproducibility
+
+The implementation follows the configuration reported in the manuscript.
+
+Key parameters:
+
+| Parameter | Value |
+|------------|---------|
+| Sequence Length | 60 |
+| Mask Ratio | 75% |
+| Embedding Dimension | 128 |
+| Transformer Layers | 4 |
+| Attention Heads | 8 |
+| Batch Size | 256 |
+| Optimizer | AdamW |
+| Random Seed | 42 |
+
 
 ---
 
@@ -368,7 +450,7 @@ Temporal Context Encoding
 
         ▼
 
-41-Dimensional Feature Space
+35-Dimensional Feature Space
 ```
 
 ---
@@ -421,6 +503,15 @@ NaviSight's feature registry currently spans four primary domains:
 | Quality-Control Features | Data reliability signals |
 
 This multimodal representation enables the system to learn behavioral manifolds rather than relying solely on trajectory geometry.
+
+
+| Domain | Features |
+|----------|----------|
+| Physics | 13 |
+| Weather | 9 |
+| Context | 8 |
+| Quality | 5 |
+| Total | 35 |
 
 ---
 
@@ -519,7 +610,7 @@ Interactive Maritime Analytics Dashboard
 
 ---
 
-# Mermaid Architecture Diagram
+## Mermaid Architecture Diagram
 
 ```mermaid
 flowchart TD
@@ -548,25 +639,55 @@ I --> J[Tactical Intelligence Dashboard]
 ```
 ---
 
-# NaviSight Methodology
+# NAVISIGHT Methodology
 
-Data Engineering
-     ↓
-Multimodal Feature Construction
-     ↓
-Maritime Masked Autoencoder
-     ↓
-128-D Embeddings
-     ↓
-HNSW Behavioral Memory
-     ↓
-Reconstruction Channel
-+
-Behavioral Drift Channel
-     ↓
-Fusion
-     ↓
-Anomaly Detection
+The framework operates in three stages:
+
+## Stage 1 — Self-Supervised Representation Learning
+
+AIS trajectories are transformed into multimodal behavioral sequences
+containing:
+
+- Kinematic features
+- Environmental features
+- Contextual features
+- Data quality features
+
+A Maritime Masked Autoencoder is trained using:
+
+- Reconstruction loss
+- Contrastive consistency loss
+
+to learn vessel behavior embeddings without anomaly labels.
+
+---
+
+## Stage 2 — Behavioral Memory Construction
+
+Trajectory embeddings are:
+
+- L2 normalized
+- Indexed using HNSW
+- Stored as behavioral memory
+
+This enables efficient retrieval of historically similar vessel behavior.
+
+---
+
+## Stage 3 — Dual-Channel Anomaly Detection
+
+Two complementary anomaly signals are computed:
+
+### Reconstruction Channel
+
+Measures local trajectory reconstruction failure.
+
+### Behavioral Drift Channel
+
+Measures distance from historical behavioral neighbors.
+
+The final anomaly score is obtained through calibrated fusion.
+
 
 ---
 
@@ -671,7 +792,7 @@ Learn vessel behavioral representations from AIS trajectories.
 
 ## Inputs
 
-119-step telemetry sequences.
+60-step telemetry sequences.
 
 Features include:
 
@@ -731,6 +852,39 @@ Operational maritime intelligence.
 - dependent on AIS quality
 - vulnerable to missing transmissions
 - limited environmental context
+
+---
+
+# Evaluation Framework
+
+NAVISIGHT follows a strictly chronological evaluation protocol.
+
+| Period | Purpose |
+|----------|----------|
+| Jan 2018 – Jun 2019 | Training |
+| Jul 2019 – Sep 2019 | Calibration |
+| Oct 2019 – Dec 2019 | Testing |
+
+This prevents temporal leakage and evaluates generalization to future vessel traffic patterns.
+
+---
+
+## Calibration
+
+Thresholds are estimated from the calibration period using the 99.5th percentile.
+
+No manually tuned thresholds are used.
+
+---
+
+## Metrics
+
+- AUROC
+- AUPRC
+- Precision
+- Recall
+- F1 Score
+- Confusion Matrix
 
 ---
 
@@ -1050,7 +1204,7 @@ navisight/
 | Metric | Value |
 |----------|---------|
 | Embedding Size | 128 |
-| Sequence Length | 119 |
+| Sequence Length | 60 |
 | ANN Backend | HNSW |
 | Storage Format | Parquet |
 | Inference Framework | PyTorch |
@@ -1317,24 +1471,6 @@ and inspired by research across:
 - Geospatial Intelligence
 - Maritime Analytics
 - Behavioral Modeling
-
----
-
-# Author
-
-### Anil Kumar Korupoju
-
-AI Engineer • Machine Learning Engineer • Applied AI Research Enthusiast
-
-Focused on:
-
-- Representation Learning
-- Self-Supervised Sequence Systems
-- RAG Systems
-- Agentic AI
-- Geospatial Intelligence
-- Large Language Models
-- Anomaly Detection
 
 ---
 
