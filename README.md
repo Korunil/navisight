@@ -28,7 +28,8 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 ## Table of Contents
 
-- [Research Results](#research-results)
+- [Benchmark Results](#benchmark-results)
+- [Skills Demonstrated](#skills-demonstrated)
 - [Associated Publication](#associated-publication)
 - [Author](#author)
 - [Mission](#mission)
@@ -94,27 +95,53 @@ into a unified operational intelligence system.
 The result is a framework capable of detecting subtle behavioral anomalies that would remain invisible to threshold-based monitoring systems.
 
 ---
-# Research Results
+# Project Status
 
-NAVISIGHT was evaluated on approximately 192 million AIS observations
-from the Aegean Sea.
+| Item | Status |
+|--------|--------|
+| Research Paper | Submitted to Ocean Engineering (2026) |
+| Codebase | Public |
+| Reproducibility | Supported |
+| Documentation | Active |
+| License | Apache 2.0 |
+| Development Status | Research Prototype |
+
+---
+# Benchmark Results
+
+NAVISIGHT was evaluated on approximately 192 million AIS observations from the Aegean Sea.
 
 Key results:
 
-| Detection Channel | AUROC |
-|-------------------|--------|
-| Isolation Forest | 0.6252 |
+| Method | AUROC |
+|----------|--------|
 | One-Class SVM | 0.5007 |
 | LOF | 0.5431 |
+| Isolation Forest | 0.6252 |
 | LSTM AutoEncoder | 0.5617 |
-| Reconstruction | 0.8737 |
-| Behavioural Manifold | 0.9309 |
-| OR Fusion | 0.9247 |
+| NAVISIGHT Reconstruction | 0.8737 |
+| NAVISIGHT Behavioural Drift | 0.9309 |
 
 Evaluation followed a strictly chronological train-calibration-test protocol.
 
 ---
+# Skills Demonstrated
 
+This project demonstrates experience in:
+
+- Self-Supervised Learning
+- Transformer Architectures
+- Representation Learning
+- Geospatial Analytics
+- Time-Series Modelling
+- Feature Engineering
+- Large-Scale Data Processing
+- Approximate Nearest Neighbour Search
+- Explainable AI
+- Scientific Software Engineering
+- Maritime Domain Intelligence
+
+---
 # Associated Publication
 
 **NAVISIGHT: A Self-Supervised Maritime Anomaly Detection Framework for AIS Trajectories**
@@ -130,8 +157,10 @@ Status:
 
 The repository contains the implementation used to produce the results reported in the manuscript.
 
----
+**Disclaimer**: This repository is released independently of the review process.
+Public code availability does not imply acceptance of the associated manuscript.
 
+---
 # Author
 
 ### Anil Kumar Korupoju
@@ -159,7 +188,8 @@ If you use NAVISIGHT in academic work, please cite:
   title={NAVISIGHT: A Self-Supervised Maritime Anomaly Detection Framework for AIS Trajectories},
   author={Korupoju, Anil Kumar},
   journal={Ocean Engineering},
-  year={2026}
+  year={2026},
+  note={Under Review}
 }
 ```
 ---
@@ -195,14 +225,28 @@ to create a modern behavioral intelligence framework for maritime anomaly detect
 
 # Why NaviSight Matters
 
-NaviSight demonstrates how modern self-supervised learning,
-approximate nearest-neighbour search, geospatial analytics,
-and maritime domain knowledge can be combined into a unified
-anomaly detection framework.
+## What Makes NAVISIGHT Different?
 
-The project was developed as both a research contribution and
-an exploration of scalable behavioural AI for real-world
-maritime surveillance systems.
+Unlike conventional maritime anomaly detection systems,
+NAVISIGHT combines:
+
+- Self-supervised representation learning
+- Multimodal AIS + weather + geospatial fusion
+- Behavioural manifold monitoring
+- Approximate nearest-neighbour retrieval
+- Counterfactual anomaly simulation
+- Explainable anomaly analysis
+
+within a single end-to-end framework.
+
+Most maritime anomaly systems focus on trajectories.
+
+NAVISIGHT focuses on behaviour.
+
+---
+NaviSight demonstrates how modern self-supervised learning, approximate nearest-neighbour search, geospatial analytics, and maritime domain knowledge can be combined into a unified anomaly detection framework.
+
+The project was developed as both a research contribution and an exploration of scalable behavioural AI for real-world maritime surveillance systems.
 
 More than 80% of global trade travels by sea.
 
@@ -256,9 +300,15 @@ Rather than relying on fixed thresholds, NaviSight learns normal vessel behavior
 
 ## Reproducibility
 
-The implementation follows the configuration reported in the manuscript.
+The published results were generated using:
 
-Key parameters:
+- Python 3.11
+- PyTorch 2.5
+- CUDA 12.1
+- Random seed 42
+- Chronological train-calibration-test split
+
+Key model parameters:
 
 | Parameter | Value |
 |------------|---------|
@@ -284,9 +334,9 @@ The dataset captures vessel movement behavior at scale and serves as the foundat
 
 ---
 
-## Exploratory Dataset Statistics (Month Sample - September 2018)
+## Exploratory Dataset Statistics
 
-The following statistics correspond to a one-month AIS telemetry snapshot used for exploratory analysis, feature validation, and data quality assessment.
+The following statistics correspond to AIS telemetry snapshot used for exploratory analysis, feature validation, and data quality assessment.
 
 | Attribute | Value |
 |------------|---------|
@@ -887,40 +937,6 @@ No manually tuned thresholds are used.
 - Confusion Matrix
 
 ---
-
-# Mathematical Foundations
-
-The platform models vessel state as:
-
-```math
-x_t = [p_x, p_y, v, \theta, z]^T
-```
-
-where:
-
-- position
-- velocity
-- heading
-- latent behavioral regime
-
-evolve through a stochastic dynamical process.
-
----
-
-## State Evolution
-
-```math
-dx_t = f(x_t,t)dt + g(x_t,t)dW_t
-```
-
-where:
-
-- f = deterministic dynamics
-- g = stochastic dynamics
-- W = Brownian process
-
----
-
 # Engineering Challenges Solved
 
 ---
