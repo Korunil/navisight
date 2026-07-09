@@ -27,7 +27,8 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 # Table of Contents
 
 ## Table of Contents
-
+- [Executive Summary](#executive-summary)
+- [Project Status](#project-status)
 - [Benchmark Results](#benchmark-results)
 - [Skills Demonstrated](#skills-demonstrated)
 - [Associated Publication](#associated-publication)
@@ -35,16 +36,35 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Mission](#mission)
 - [Overview](#overview)
 - [Why NaviSight Matters](#why-navisight-matters)
+        - [What Makes NAVISIGHT Different?](#what-makes-navisight-different)
+        - [Scale of the Study](#scale-of-the-study)
+        - [Reproducibility](#reproducibility)
 - [Dataset & Data Engineering](#dataset--data-engineering)
         - [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
+        - [Exploratory Dataset Statistics](#exploratory-dataset-statistics)
+        - [AIS Signals](#ais-signals)  
         - [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
         - [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
+        - [Weather Variables](#weather-variables)
+        - [Environmental Feature Derivation](#environmental-feature-derivation)
 - [Feature Engineering Pipeline](#feature-engineering-pipeline)
+        - [Feature Registry Summary](#feature-registry-summary)
 - [Training Corpus Construction](#training-corpus-construction)
+        - [Why the Dataset Matters](#why-the-dataset-matters)
 - [Key Capabilities](#key-capabilities)
 - [Architecture](#architecture)
+        - [High-Level System Architecture](#high-level-system-architecture)
+        - [System Flow](#system-flow)
+        - [Mermaid Architecture Diagram](#mermaid-architecture-diagram)
 - [NAVISIGHT Methodology](#navisight-methodology)
+        - [Stage 1 — Self-Supervised Representation Learning](#stage-1--self-supervised-representation-learning)
+        - [Stage 2 — Behavioral Memory Construction](#stage-2--behavioral-memory-construction)
+        - [Stage 3 — Dual-Channel Anomaly Detection](#stage-3--dual-channel-anomaly-detection)
 - [Research Contributions](#research-contributions)
+        - [Self-Supervised Maritime Representation Learning](#1-self-supervised-maritime-representation-learning)
+        - [Cohort-Gated Similarity Search](#2-cohort-gated-similarity-search)
+        - [Rolling Behavioral Profiles](#3-rolling-behavioral-profiles)
+        - [Counterfactual Threat Simulation](#4-counterfactual-threat-simulationg)
 - [Model Card v1.0](#model-card-v10)
 - [Evaluation Framework](#evaluation-framework)
 - [Mathematical Foundations](#mathematical-foundations)
@@ -471,6 +491,7 @@ Kinematic Feature Extraction
         ├── Jerk
         └── Heading Dynamics
 
+        │
         ▼
 
 Geospatial Enrichment
@@ -480,6 +501,7 @@ Geospatial Enrichment
         ├── Harbor Features
         └── Terminal Context
 
+        │
         ▼
 
 Weather Fusion
@@ -490,6 +512,7 @@ Weather Fusion
         ├── Pressure
         └── Humidity
 
+        │
         ▼
 
 Temporal Context Encoding
@@ -498,10 +521,34 @@ Temporal Context Encoding
         ├── Day-of-Week
         └── Voyage Phase
 
+        │
         ▼
 
 35-Dimensional Feature Space
 ```
+---
+
+## Feature Registry Summary
+
+NaviSight's feature registry currently spans four primary domains:
+
+| Category | Purpose |
+|-----------|---------|
+| Kinematic Features | Vessel motion dynamics |
+| Geospatial Features | Environmental context |
+| Weather Features | Operational conditions |
+| Quality-Control Features | Data reliability signals |
+
+This multimodal representation enables the system to learn behavioral manifolds rather than relying solely on trajectory geometry.
+
+
+| Domain | Features |
+|----------|----------|
+| Physics | 13 |
+| Weather | 9 |
+| Context | 8 |
+| Quality | 5 |
+| Total | 35 |
 
 ---
 
@@ -538,30 +585,6 @@ Transformer Encoder
 
 128-D Behavioral Embeddings
 ```
-
----
-
-## Feature Registry Summary
-
-NaviSight's feature registry currently spans four primary domains:
-
-| Category | Purpose |
-|-----------|---------|
-| Kinematic Features | Vessel motion dynamics |
-| Geospatial Features | Environmental context |
-| Weather Features | Operational conditions |
-| Quality-Control Features | Data reliability signals |
-
-This multimodal representation enables the system to learn behavioral manifolds rather than relying solely on trajectory geometry.
-
-
-| Domain | Features |
-|----------|----------|
-| Physics | 13 |
-| Weather | 9 |
-| Context | 8 |
-| Quality | 5 |
-| Total | 35 |
 
 ---
 
