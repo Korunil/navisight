@@ -1,0 +1,43 @@
+(311env) C:\Users\kka\Documents\navisight>python scripts/eval_pipeline.py
+2026-06-29 17:24:31,782 - INFO - 🚨 INITIATING MULTI-CHANNEL EVALUATION AND COMPREHENSIVE RECOVERY FRAMEWORK
+2026-06-29 17:24:31,782 - INFO - Loading Global Model Network Checkpoint: models/checkpoints/best_model.pt
+2026-06-29 17:24:32,024 - INFO - ==========================================================================
+2026-06-29 17:24:32,024 - INFO - 📋 SYSTEM PLATFORM | Checkpoint Keys Present: ['epoch', 'global_step', 'model_state_dict', 'optimizer_state_dict', 'metrics', 'system_token', 'feature_schema_hash', 'scheduler_state_dict', 'grad_scaler_state_dict']
+2026-06-29 17:24:32,024 - INFO - ==========================================================================
+2026-06-29 17:24:32,057 - INFO - ==========================================================================
+2026-06-29 17:24:32,057 - INFO - 📊 SYSTEM PLATFORM | Reconstructor Nodes = 41 | Feature Registry Width = 41
+2026-06-29 17:24:32,057 - INFO - ==========================================================================
+2026-06-29 17:24:32,057 - INFO - 👉 Operational Guardrail Locked: Target neural graph set to model.eval() evaluation state.
+2026-06-29 17:24:32,057 - INFO - 📊 PHASE A: Extracting Baseline Background Distributions (Jul-Sep 2019)...
+2026-06-29 17:24:32,146 - INFO - 🔮 DEBUG | Model Forward Pass: log_time_diff Index = 10 | Input feature_dim = 41
+2026-06-29 17:24:32,208 - INFO - ==========================================================================
+2026-06-29 17:24:32,208 - INFO - 🔮 TEMPORAL CAPACITIES | Sequence Length: 60 | Requested Max Position: 59 | Embedding Weights Rows: 200
+2026-06-29 17:24:32,208 - INFO - ==========================================================================
+   --> [Phase A] Indexed 50 vessel profiles into baseline calibration matrices...
+   --> [Phase A] Indexed 100 vessel profiles into baseline calibration matrices...
+   --> [Phase A] Indexed 150 vessel profiles into baseline calibration matrices...
+   --> [Phase A] Indexed 200 vessel profiles into baseline calibration matrices...
+   --> [Phase A] Indexed 250 vessel profiles into baseline calibration matrices...
+   --> [Phase A] Indexed 300 vessel profiles into baseline calibration matrices...
+2026-06-30 07:42:41,872 - INFO - 🎯 Sequence Reconstruction Manifold Calibration | ANN p50: 0.1467 | ANN p99: 0.4984
+2026-06-30 07:42:42,261 - INFO - 🎯 Independent Cutoffs Settled | Recon Threshold: 0.9575 | ANN Threshold: 1.0490 | Fused Threshold: 0.9621
+2026-06-30 07:42:42,261 - INFO - 🏁 PHASE B: Ingesting Production Test Splits to Calculate Independent Channel Metrics...
+2026-06-30 07:42:42,261 - INFO - 🚨 [STREAMFEED] Ingesting evaluation frames for timeline partition: month=10
+🚀 Evaluating Test Stream: Vessel 104810258026837499 | Recon MSE: 0.5709 | ANN Risk: 0.26 | Decision Pairs:  2002026-06-30 18:03:09,238 - INFO - 🚨 [STREAMFEED] Ingesting evaluation frames for timeline partition: month=11
+🚀 Evaluating Test Stream: Vessel 159785864183828799 | Recon MSE: 0.6592 | ANN Risk: 0.20 | Decision Pairs:  4002026-07-01 00:18:40,034 - INFO - 🚨 [STREAMFEED] Ingesting evaluation frames for timeline partition: month=12
+🚀 Evaluating Test Stream: Vessel 98149662220630299 | Recon MSE: 0.7234 | ANN Risk: 0.16 | Decision Pairs:  6004
+
+
+===========================================================================
+📊 NAVISIGHT PLATFORM INDEPENDENT MULTI-CHANNEL RUN COMPLETE
+===========================================================================
+• Sequence Reconstruction Channel   | AUROC: 0.8737 | F1: 0.0946 | Recall: 0.0500
+• Manifold ANN Distance Channel     | AUROC: 0.9309   | F1: 0.0328 | Recall: 0.0167
+---------------------------------------------------------------------------
+• Strategy: Combined Decision Score | AUROC: 0.8806
+• Strategy: Discrete [OR] Gate      | F1: 0.1242 | Precision: 0.9091 | Recall: 0.0667
+• Strategy: Discrete [AND] Gate     | F1: 0.0000 | Precision: 0.0000 | Recall: 0.0000
+• Strategy: Discrete [JOINT] Gate   | F1: 0.1242 | Precision: 0.9091 | Recall: 0.0667
+===========================================================================
+
+
