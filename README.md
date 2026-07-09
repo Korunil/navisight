@@ -714,6 +714,8 @@ I --> J[Tactical Intelligence Dashboard]
 
 # NAVISIGHT Methodology
 
+![NAVISIGHT Methodology](assets/navisight_methodology.png)
+
 The framework operates in three stages:
 
 ## Stage 1 — Self-Supervised Representation Learning
@@ -1178,15 +1180,18 @@ Displays:
 ```text
 assets/
 ├── dashboard_overview.png
-├── dashboard_clc.png                # Coverted Loitering Circle
-├── dashboard_add.png                # AR(1) Deception Drift
-├── dashboard_ctc.png                # Constrained Topological Creep
-├── dashboard_analytics.png
+├── dashboard_loitering.png
+├── dashboard_deadreckoning.png
+├── dashboard_coastalcreep.png
+├── navisight_methodology.png
 ├── navisight_architecture.png
 ```
 ---
-# Tactical Intelligence Hub
+## Screenshots
 
+![Dashboard Demo](assets/dashboard_overview.png)
+![Dashboard Loitering](assets/dashboard_loitering.png)
+![Dashboard Dead Reckoning](assets/dashboard_deadreckoning.png)
 ![Dashboard Demo](assets/dashboard_overview.png)
 
 ---
