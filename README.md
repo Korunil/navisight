@@ -1,11 +1,5 @@
 # 🛰️ NaviSight
 
-<div align="center">
-
-### Geospatial Behavioral Intelligence Platform for Maritime Anomaly Detection
-
-Self-Supervised Learning • Behavioral Representation Learning • HNSW Similarity Search • Explainable AI • Counterfactual Threat Simulation • Maritime Intelligence
-
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep_Learning-red)
 ![Polars](https://img.shields.io/badge/Polars-Analytics-purple)
@@ -20,6 +14,11 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 ![Explainable AI](https://img.shields.io/badge/XAI-Enabled-red)
 ![License](https://img.shields.io/badge/License-Apache_2.0-red)
 
+<div align="center">
+
+### Geospatial Behavioral Intelligence Platform for Maritime Anomaly Detection
+
+Self-Supervised Learning • Behavioral Representation Learning • HNSW Similarity Search • Explainable AI • Counterfactual Threat Simulation • Maritime Intelligence
 </div>
 
 ---
