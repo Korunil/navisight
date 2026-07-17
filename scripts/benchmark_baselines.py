@@ -31,9 +31,6 @@ MAX_WINDOW_SIZE = 200
 STRIDE = 100
 FEATURE_DIM = len(REGISTRY.all_features)
 
-# ==========================================================================
-# REQ 16 & Point 6: MAXIMUM REPRODUCIBILITY DETERMINISM SEED LOCKS
-# ==========================================================================
 def seed_everything(seed=42):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -50,7 +47,7 @@ def seed_everything(seed=42):
 seed_everything(GLOBAL_SEED)
 
 # ==========================================================================
-# TIMASERIES RECURRENT BASELINE: LSTM AUTOENCODER MODEL
+# TIMESERIES RECURRENT BASELINE: LSTM AUTOENCODER MODEL
 # ==========================================================================
 class LSTMAutoencoder(nn.Module):
     def __init__(self, feature_dim, hidden_dim=64):
@@ -112,7 +109,7 @@ def main():
     vessels_processed_cal = 0
     
     # ==========================================================================
-    # PHASE A: INGEST & VEHICLE GROUP POOLING (MONTHS 7-9)
+    # PHASE A: INGEST & VESSEL GROUP POOLING (MONTHS 7-9)
     # ==========================================================================
     logging.info("📥 Harvesting calibration sequence slices partitioned by vessel...")
     for m_int in CALIBRATION_MONTHS:
@@ -142,7 +139,7 @@ def main():
     train_vessel_idx = vessel_indices[:int(num_vessels * 0.8)]
     val_vessel_idx = vessel_indices[int(num_vessels * 0.8):]
     
-    # Point 3 Fix: Execute feature extraction precisely once after splitting is finalized
+    # Execute feature extraction precisely once after splitting is finalized
     raw_train_flat, X_train_seq = [], []
     for idx in train_vessel_idx:
         for df_slice in vessel_slice_groups[idx]:
@@ -234,7 +231,7 @@ def main():
             break
 
     # ==========================================================================
-    # PHASE B: EVALUATING THRESHOLDS ON VALIDATION GROUPS (Point 7 Fix)
+    # PHASE B: EVALUATING THRESHOLDS ON VALIDATION GROUPS
     # ==========================================================================
     logging.info("📊 Calibrating frozen operational thresholds over validation splits...")
     lstm_ae.eval() # Explicit evaluation mode lock
