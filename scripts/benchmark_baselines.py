@@ -101,7 +101,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     processed_lakehouse_root = "data/processed/"
-    output_baselines_json = "configs/external_baselines_results.json"
+    output_baselines_json = "configs/external_baselines_results_legacy.json"
     injector = ManifoldAwareAnomalyPerturbationEngine()
 
     # Store lists of lightweight window slices grouped by vessel
