@@ -26,65 +26,137 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 
 # Table of Contents
 
-## Table of Contents
 - [Executive Summary](#executive-summary)
 - [Project Status](#project-status)
 - [Benchmark Results](#benchmark-results)
 - [Skills Demonstrated](#skills-demonstrated)
 - [Associated Publication](#associated-publication)
 - [Author](#author)
+- [Citation](#citation)
 - [Mission](#mission)
 - [Overview](#overview)
+
 - [Why NaviSight Matters](#why-navisight-matters)
-        - [What Makes NAVISIGHT Different?](#what-makes-navisight-different)
-        - [Scale of the Study](#scale-of-the-study)
-        - [Reproducibility](#reproducibility)
-- [Dataset & Data Engineering](#dataset--data-engineering)
-        - [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
-        - [Exploratory Dataset Statistics](#exploratory-dataset-statistics)
-        - [AIS Signals](#ais-signals)  
-        - [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
-        - [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
-        - [Weather Variables](#weather-variables)
-        - [Environmental Feature Derivation](#environmental-feature-derivation)
-- [Feature Engineering Pipeline](#feature-engineering-pipeline)
-        - [Feature Registry Summary](#feature-registry-summary)
-- [Training Corpus Construction](#training-corpus-construction)
-        - [Why the Dataset Matters](#why-the-dataset-matters)
+  - [What Makes NAVISIGHT Different?](#what-makes-navisight-different)
+  - [Scale of the Study](#scale-of-the-study)
+  - [Reproducibility](#reproducibility)
+
+- [Dataset & Data Engineering](#-dataset--data-engineering)
+  - [AIS Maritime Telemetry Corpus](#ais-maritime-telemetry-corpus)
+  - [Exploratory Dataset Statistics](#exploratory-dataset-statistics)
+  - [AIS Signals](#ais-signals)
+  - [Geospatial Intelligence Layer](#geospatial-intelligence-layer)
+  - [Meteorological Intelligence Layer](#meteorological-intelligence-layer)
+    - [Weather Dataset Statistics](#weather-dataset-statistics)
+    - [Weather Variables](#weather-variables)
+    - [Environmental Feature Derivation](#environmental-feature-derivation)
+
+- [Feature Engineering Pipeline](#-feature-engineering-pipeline)
+  - [Feature Registry Summary](#feature-registry-summary)
+
+- [Training Corpus Construction](#-training-corpus-construction)
+  - [Why the Dataset Matters](#why-the-dataset-matters)
+
 - [Key Capabilities](#key-capabilities)
+
 - [Architecture](#architecture)
-        - [High-Level System Architecture](#high-level-system-architecture)
-        - [System Flow](#system-flow)
-        - [Mermaid Architecture Diagram](#mermaid-architecture-diagram)
+  - [High-Level System Architecture](#high-level-system-architecture)
+  - [System Flow](#system-flow)
+  - [Mermaid Architecture Diagram](#mermaid-architecture-diagram)
+
 - [NAVISIGHT Methodology](#navisight-methodology)
-        - [Stage 1 — Self-Supervised Representation Learning](#stage-1--self-supervised-representation-learning)
-        - [Stage 2 — Behavioral Memory Construction](#stage-2--behavioral-memory-construction)
-        - [Stage 3 — Dual-Channel Anomaly Detection](#stage-3--dual-channel-anomaly-detection)
+  - [Stage 1 — Self-Supervised Representation Learning](#stage-1--self-supervised-representation-learning)
+  - [Stage 2 — Behavioral Memory Construction](#stage-2--behavioral-memory-construction)
+  - [Stage 3 — Dual-Channel Anomaly Detection](#stage-3--dual-channel-anomaly-detection)
+
 - [Research Contributions](#research-contributions)
-        - [Self-Supervised Maritime Representation Learning](#1-self-supervised-maritime-representation-learning)
-        - [Cohort-Gated Similarity Search](#2-cohort-gated-similarity-search)
-        - [Rolling Behavioral Profiles](#3-rolling-behavioral-profiles)
-        - [Counterfactual Threat Simulation](#4-counterfactual-threat-simulationg)
+  - [1. Self-Supervised Maritime Representation Learning](#1-self-supervised-maritime-representation-learning)
+  - [2. Cohort-Gated Similarity Search](#2-cohort-gated-similarity-search)
+  - [3. Rolling Behavioral Profiles](#3-rolling-behavioral-profiles)
+  - [4. Counterfactual Threat Simulation](#4-counterfactual-threat-simulation)
+
 - [Model Card v1.0](#model-card-v10)
+  - [Model Name](#model-name)
+  - [Version](#version)
+  - [Model Type](#model-type)
+  - [Objective](#objective)
+  - [Model Overview](#model-overview)
+  - [Inputs](#inputs)
+  - [Outputs](#outputs)
+    - [Behavioral Embedding](#behavioral-embedding)
+    - [Risk Score](#risk-score)
+    - [Threat Classification](#threat-classification)
+  - [Downstream Tasks](#downstream-tasks)
+  - [Intended Use](#intended-use)
+  - [Limitations](#limitations)
+
 - [Evaluation Framework](#evaluation-framework)
-- [Mathematical Foundations](#mathematical-foundations)
+  - [Calibration](#calibration)
+  - [Metrics](#metrics)
+
 - [Engineering Challenges Solved](#engineering-challenges-solved)
+  - [Scaling Massive AIS Datasets](#scaling-massive-ais-datasets)
+  - [Fast Behavioral Similarity Search](#fast-behavioral-similarity-search)
+  - [Reducing False Positives](#reducing-false-positives)
+  - [Explainability](#explainability)
+
 - [Behavioral Embedding Space](#behavioral-embedding-space)
+
 - [Similarity Search Engine](#similarity-search-engine)
+  - [ANN Backend](#ann-backend)
+  - [Stored Metadata](#stored-metadata)
+
 - [Counterfactual Threat Simulation](#counterfactual-threat-simulation)
+  - [Covert Loitering](#covert-loitering)
+  - [Dead Reckoning Drift](#dead-reckoning-drift)
+  - [Coastal Creep](#coastal-creep)
+
 - [Tactical Intelligence Hub](#tactical-intelligence-hub)
+  - [Threat Assessment](#threat-assessment)
+  - [Tactical Navigation View](#tactical-navigation-view)
+  - [Behavioral Analytics](#behavioral-analytics)
+  - [Similarity Intelligence](#similarity-intelligence)
+
 - [Dashboard Preview](#dashboard-preview)
+  - [Screenshots](#screenshots)
+
 - [Repository Structure](#repository-structure)
+
 - [System Metrics](#system-metrics)
+
 - [Technology Stack](#technology-stack)
+
 - [Quick Start](#quick-start)
+  - [Clone the Repository](#1-clone-the-repository)
+  - [Install Dependencies](#2-install-dependencies)
+  - [Clean Previous Artifacts](#3-clean-previous-artifacts)
+  - [Compute Global Statistics](#4-compute-global-statistics)
+  - [Run the Training Pipeline](#5-run-the-training-pipeline)
+  - [Build Embeddings](#6-build-embeddings)
+  - [Run the Evaluation Pipeline](#7-run-the-evaluation-pipeline)
+  - [Launch Dashboard](#8-launch-dashboard)
+
 - [Engineering Tradeoffs](#engineering-tradeoffs)
+  - [Why HNSW Instead of FAISS IVF?](#why-hnsw-instead-of-faiss-ivf)
+  - [Why Self-Supervised Learning?](#why-self-supervised-learning)
+
 - [Design Decisions](#design-decisions)
+  - [Decision #1](#decision-1)
+  - [Decision #2](#decision-2)
+  - [Decision #3](#decision-3)
+
 - [Lessons Learned Building NaviSight](#lessons-learned-building-navisight)
+
 - [Example Workflow](#example-workflow)
+
+- [Future Work](#future-work)
+
 - [Academic Inspiration](#academic-inspiration)
+
 - [Contributing](#contributing)
+
 - [License](#license)
+
 - [Acknowledgements](#acknowledgements)
 
 ---
