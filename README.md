@@ -37,7 +37,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Mission](#mission)
 - [Overview](#overview)
 
-- [Dashboard Preview](#dashboard-preview)
+- [Dashboard Walkthrough](#dashboard-walkthrough)
   - [Screenshots](#screenshots)
 
 - [Key Features](#key-features)
@@ -328,25 +328,36 @@ The platform combines:
 to create a modern behavioral intelligence framework for maritime anomaly detection.
 
 ---
-# Dashboard Preview
+# Dashboard Walkthrough
 
-```text
-assets/
-├── training.log
-├── evaluation.log
-├── dashboard_overview.png
-├── dashboard_loitering.png
-├── dashboard_deadreckoning.png
-├── dashboard_coastalcreep.png
-├── navisight_methodology.png
-├── navisight_architecture.png
-```
+### Operational Dashboard
+
+*Interactive dashboard for behavioral analysis, risk assessment, and trajectory visualization.*
+
+![Operational Dashboard](assets/dashboard_overview.png)
+
 ---
-## Screenshots
 
-![Dashboard Demo](assets/dashboard_overview.png)
+### Covert Loitering Simulation
+
+*Counterfactual loitering scenario illustrating behavioral drift detection and risk assessment.*
+
 ![Dashboard Loitering](assets/dashboard_loitering.png)
+
+---
+
+### Dead Reckoning Drift Simulation
+
+*Simulated heading drift used to evaluate deceptive navigation detection and anomaly localization.*
+
 ![Dashboard Dead Reckoning](assets/dashboard_deadreckoning.png)
+
+---
+
+### Coastal Creep Simulation
+
+*Synthetic near-shore trajectory demonstrating detection of suspicious coastal navigation behavior.*
+
 ![Dashboard Coastal Creep](assets/dashboard_coastalcreep.png)
 
 ---
