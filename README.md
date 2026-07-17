@@ -27,6 +27,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 # Table of Contents
 
 - [Executive Summary](#executive-summary)
+- [Highlights](#highlights)
 - [Project Status](#project-status)
 - [Benchmark Results](#benchmark-results)
 - [Skills Demonstrated](#skills-demonstrated)
@@ -36,8 +37,13 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
 - [Mission](#mission)
 - [Overview](#overview)
 
+- [Dashboard Preview](#dashboard-preview)
+  - [Screenshots](#screenshots)
+
+- [Key Features](#key-features)
+
 - [Why NaviSight Matters](#why-navisight-matters)
-  - [What Makes NAVISIGHT Different?](#what-makes-navisight-different)
+  - [What Makes NaviSight Different?](#what-makes-navisight-different)
   - [Scale of the Study](#scale-of-the-study)
   - [Reproducibility](#reproducibility)
 
@@ -64,7 +70,7 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
   - [System Flow](#system-flow)
   - [Mermaid Architecture Diagram](#mermaid-architecture-diagram)
 
-- [NAVISIGHT Methodology](#navisight-methodology)
+- [NaviSight Methodology](#navisight-methodology)
   - [Stage 1 — Self-Supervised Representation Learning](#stage-1--self-supervised-representation-learning)
   - [Stage 2 — Behavioral Memory Construction](#stage-2--behavioral-memory-construction)
   - [Stage 3 — Dual-Channel Anomaly Detection](#stage-3--dual-channel-anomaly-detection)
@@ -116,9 +122,6 @@ Self-Supervised Learning • Behavioral Representation Learning • HNSW Similar
   - [Tactical Navigation View](#tactical-navigation-view)
   - [Behavioral Analytics](#behavioral-analytics)
   - [Similarity Intelligence](#similarity-intelligence)
-
-- [Dashboard Preview](#dashboard-preview)
-  - [Screenshots](#screenshots)
 
 - [Repository Structure](#repository-structure)
 
@@ -187,6 +190,17 @@ into a unified operational intelligence system.
 The result is a framework capable of detecting subtle behavioral anomalies that would remain invisible to threshold-based monitoring systems.
 
 ---
+# Highlights
+
+- 192M+ AIS observations processed
+- Self-supervised Transformer encoder
+- 128-dimensional behavioral embeddings
+- Cohort-aware HNSW similarity search
+- AUROC up to 0.93
+- Interactive Streamlit intelligence dashboard
+- Counterfactual threat simulation
+
+---
 # Project Status
 
 | Item | Status |
@@ -201,7 +215,7 @@ The result is a framework capable of detecting subtle behavioral anomalies that 
 ---
 # Benchmark Results
 
-NAVISIGHT was evaluated on approximately 192 million AIS observations from the Aegean Sea.
+NaviSight was evaluated on approximately 192 million AIS observations from the Aegean Sea.
 
 Key results:
 
@@ -211,8 +225,8 @@ Key results:
 | LOF | 0.5431 |
 | Isolation Forest | 0.6252 |
 | LSTM AutoEncoder | 0.5617 |
-| NAVISIGHT Reconstruction | 0.8737 |
-| NAVISIGHT Behavioural Drift | 0.9309 |
+| NaviSight Reconstruction | 0.8737 |
+| NaviSight Behavioural Drift | 0.9309 |
 
 Evaluation followed a strictly chronological train-calibration-test protocol.
 
@@ -273,7 +287,7 @@ Focused on:
 
 # Citation
 
-If you use NAVISIGHT in academic work, please cite:
+If you use NaviSight in academic work, please cite:
 
 ```bibtex
 @article{korupoju2026navisight,
@@ -314,13 +328,46 @@ The platform combines:
 to create a modern behavioral intelligence framework for maritime anomaly detection.
 
 ---
+# Dashboard Preview
 
+```text
+assets/
+├── training.log
+├── evaluation.log
+├── dashboard_overview.png
+├── dashboard_loitering.png
+├── dashboard_deadreckoning.png
+├── dashboard_coastalcreep.png
+├── navisight_methodology.png
+├── navisight_architecture.png
+```
+---
+## Screenshots
+
+![Dashboard Demo](assets/dashboard_overview.png)
+![Dashboard Loitering](assets/dashboard_loitering.png)
+![Dashboard Dead Reckoning](assets/dashboard_deadreckoning.png)
+![Dashboard Coastal Creep](assets/dashboard_coastalcreep.png)
+
+---
+# Key Features
+
+- End-to-end AIS processing
+- Self-supervised transformer
+- Behavioral embeddings
+- Approximate nearest-neighbor retrieval
+- Rolling behavioral profiles
+- Explainable anomaly scoring
+- Counterfactual simulation
+- Interactive dashboard
+
+---
 # Why NaviSight Matters
 
-## What Makes NAVISIGHT Different?
+## What Makes NaviSight Different?
 
 Unlike conventional maritime anomaly detection systems,
-NAVISIGHT combines:
+NaviSight combines:
 
 - Self-supervised representation learning
 - Multimodal AIS + weather + geospatial fusion
@@ -333,7 +380,7 @@ within a single end-to-end framework.
 
 Most maritime anomaly systems focus on trajectories.
 
-NAVISIGHT focuses on behaviour.
+NaviSight focuses on behaviour.
 
 ---
 NaviSight demonstrates how modern self-supervised learning, approximate nearest-neighbour search, geospatial analytics, and maritime domain knowledge can be combined into a unified anomaly detection framework.
@@ -784,9 +831,9 @@ I --> J[Tactical Intelligence Dashboard]
 ```
 ---
 
-# NAVISIGHT Methodology
+# NaviSight Methodology
 
-![NAVISIGHT Methodology](assets/navisight_methodology.png)
+![NaviSight Methodology](assets/navisight_methodology.png)
 
 The framework operates in three stages:
 
@@ -1004,7 +1051,7 @@ Operational maritime intelligence.
 
 # Evaluation Framework
 
-NAVISIGHT follows a strictly chronological evaluation protocol.
+NaviSight follows a strictly chronological evaluation protocol.
 
 | Period | Purpose |
 |----------|----------|
@@ -1247,33 +1294,14 @@ Displays:
 
 ---
 
-# Dashboard Preview
-
-```text
-assets/
-├── dashboard_overview.png
-├── dashboard_loitering.png
-├── dashboard_deadreckoning.png
-├── dashboard_coastalcreep.png
-├── navisight_methodology.png
-├── navisight_architecture.png
-```
----
-## Screenshots
-
-![Dashboard Demo](assets/dashboard_overview.png)
-![Dashboard Loitering](assets/dashboard_loitering.png)
-![Dashboard Dead Reckoning](assets/dashboard_deadreckoning.png)
-![Dashboard Demo](assets/dashboard_overview.png)
-
----
-
 # Repository Structure
 
 ```text
 navisight/
 
 ├── configs/
+│   ├── threshold/
+│   └── weather/
 │
 ├── data/
 │   ├── raw/
@@ -1285,28 +1313,56 @@ navisight/
 │   └── state/
 │
 ├── navisight/
-│
 │   ├── pipeline/
+│   │   ├── feature_registry.py
+│   │   ├── quality_assurance.py
+│   │   ├── sequence_builder.py
+│   │   ├── voyage_segmentation.py
+│   │   └── ingestion/
+│   │       ├── cache.py
+│   │       ├── core_engine.py
+│   │       ├── database.py
+│   │       ├── kinematics.py
+│   │       └── schemas.py
 │   │
-│   ├── training/
+│   ├── geo/
+│   │   └── weather_interpolation.py
 │   │
-│   ├── evaluation/
+│   ├── engine/
+│   │   ├── data_sampler.py
+│   │   ├── feature_scaling.py
+│   │   └── train_model.py
 │   │
-│   ├── feature_registry/
+│   ├── models/
+│   │   ├── feature_projection.py
+│   │   ├── loss_masking.py
+│   │   ├── temporal_encoding.py
+│   │   └── transformer_encoder.py
 │   │
-│   ├── geospatial/
-│   │
-│   ├── embeddings/
-│   │
-│   └── inference/
+│   └── evaluation/
+│       ├── ann_index.py
+│       ├── behavior_profile_engine.py
+│       ├── embedding_store.py
+│       ├── extract_embeddings.py
+│       ├── inference_engine.py
+│       └── synthetic_anomaly_injector.py
 │
 ├── scripts/
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── generate_embeddings.py
-│   └── view_validation_dashboard.py
+│   ├── compute_global_stats.py
+│   ├── train_pipeline.py
+│   ├── build_embeddings.py
+│   ├── eval_pipeline.py
+│   ├── threshold_and_weather_sensitivity.py
+│   └── benchmark_baselines.py
 │
 ├── assets/
+│
+├── dashboard/
+│   ├── services
+│   ├── styles
+│   ├── utils
+│   ├── visualizations
+│   └── view_validation_dashboard.py
 │
 ├── requirements.txt
 ├── README.md
