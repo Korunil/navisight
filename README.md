@@ -1275,7 +1275,7 @@ navisight/
 
 # Quick Start
 
-## Clone Repository
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/navisight.git
@@ -1285,7 +1285,7 @@ cd navisight
 
 ---
 
-## Install Dependencies
+## 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -1293,7 +1293,57 @@ pip install -r requirements.txt
 
 ---
 
-## Launch Dashboard
+## 3. Clean Previous Artifacts
+
+Remove legacy embeddings, processed data, and index files to ensure a fresh run.
+
+```bash
+rm -rf data/embeddings/* data/processed/* models/state/index/*
+```
+
+---
+
+## 4. Compute Global Statistics
+
+Initialize the geospatial normalization statistics used throughout the pipeline.
+
+```bash
+python scripts/compute_global_stats.py
+```
+
+---
+
+## 5. Run the Training Pipeline
+
+Process raw telemetry, resample trajectories, and generate the processed dataset.
+
+```bash
+python scripts/train_pipeline.py
+```
+
+---
+
+## 6. Build Embeddings
+
+Generate latent representations and create the initial embedding index.
+
+```bash
+python scripts/build_embeddings.py
+```
+
+---
+
+## 7. Run the Evaluation Pipeline
+
+Populate the class-specific HNSW indices and prepare the retrieval database.
+
+```bash
+python scripts/eval_pipeline.py
+```
+
+---
+
+## 8. Launch Dashboard
 
 ```bash
 streamlit run dashboard/view_validation_dashboard.py
