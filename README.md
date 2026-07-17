@@ -1298,79 +1298,51 @@ Displays:
 
 ```text
 navisight/
-
-├── configs/
+│
+├── configs/                  # Configuration
 │   ├── threshold/
 │   └── weather/
 │
-├── data/
+├── data/                     # Raw, processed, and embedding datasets
 │   ├── raw/
 │   ├── processed/
 │   └── embeddings/
 │
-├── models/
+├── models/                   # Trained checkpoints and ANN indices
 │   ├── checkpoints/
 │   └── state/
 │
 ├── navisight/
-│   ├── pipeline/
-│   │   ├── feature_registry.py
-│   │   ├── quality_assurance.py
-│   │   ├── sequence_builder.py
-│   │   ├── voyage_segmentation.py
-│   │   └── ingestion/
-│   │       ├── cache.py
-│   │       ├── core_engine.py
-│   │       ├── database.py
-│   │       ├── kinematics.py
-│   │       └── schemas.py
-│   │
-│   ├── geo/
-│   │   └── weather_interpolation.py
-│   │
-│   ├── engine/
-│   │   ├── data_sampler.py
-│   │   ├── feature_scaling.py
-│   │   └── train_model.py
-│   │
-│   ├── models/
-│   │   ├── feature_projection.py
-│   │   ├── loss_masking.py
-│   │   ├── temporal_encoding.py
-│   │   └── transformer_encoder.py
-│   │
-│   └── evaluation/
-│       ├── ann_index.py
-│       ├── behavior_profile_engine.py
-│       ├── embedding_store.py
-│       ├── extract_embeddings.py
-│       ├── inference_engine.py
-│       └── synthetic_anomaly_injector.py
+│   ├── pipeline/             # Data ingestion & feature engineering
+│   ├── geo/                  # Geospatial and weather enrichment
+│   ├── engine/               # Training pipeline
+│   ├── models/               # Transformer architecture
+│   └── evaluation/           # Embeddings, ANN search & anomaly detection
 │
-├── scripts/
-│   ├── compute_global_stats.py
-│   ├── train_pipeline.py
-│   ├── build_embeddings.py
-│   ├── eval_pipeline.py
-│   ├── threshold_and_weather_sensitivity.py
-│   └── benchmark_baselines.py
+├── scripts/                  # End-to-end pipeline entry points
 │
-├── assets/
+├── dashboard/                # Streamlit tactical intelligence dashboard
 │
-├── dashboard/
-│   ├── services
-│   ├── styles
-│   ├── utils
-│   ├── visualizations
-│   └── view_validation_dashboard.py
+├── assets/                   # Figures, screenshots and logs
 │
 ├── requirements.txt
 ├── README.md
 └── LICENSE
 ```
 
----
+### Core Modules
 
+| Module | Purpose |
+|---------|---------|
+| `pipeline` | Data ingestion, cleaning, segmentation, and feature engineering |
+| `geo` | Weather interpolation and geospatial enrichment |
+| `engine` | Training pipeline and feature scaling |
+| `models` | Transformer encoder and neural network components |
+| `evaluation` | Embedding extraction, HNSW indexing, behavioral profiling, and anomaly detection |
+| `dashboard` | Interactive Streamlit interface for visualization and validation |
+| `scripts` | Executable entry points for training, evaluation, and benchmarking |
+
+---
 # System Metrics
 
 | Metric | Value |
@@ -1385,7 +1357,6 @@ navisight/
 | Search Complexity | O(log N) |
 
 ---
-
 # Technology Stack
 
 | Layer | Technology |
