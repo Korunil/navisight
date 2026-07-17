@@ -1,3 +1,4 @@
+<div align="center">
 # 🛰️ NaviSight
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
@@ -14,7 +15,7 @@
 ![Explainable AI](https://img.shields.io/badge/XAI-Enabled-red)
 ![License](https://img.shields.io/badge/License-Apache_2.0-red)
 
-<div align="center">
+
 
 ### Geospatial Behavioral Intelligence Platform for Maritime Anomaly Detection
 
