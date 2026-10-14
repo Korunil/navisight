@@ -474,7 +474,7 @@ candidate alerts for further assessment.
 | Transformer Forward Passes | 833,000+ |
 | Embedding Dimension | 128 |
 | ANN Backend | HNSW |
-| Feature Count | 35 |
+| Feature Count | 41 |
 
 ## Reproducibility
 
@@ -526,7 +526,7 @@ The following statistics correspond to AIS telemetry snapshot used for explorato
 | Data Type | Vessel Telemetry |
 | Learning Paradigm | Self-Supervised |
 | Sequence Length | 60 Steps |
-| Engineered Features | 35 |
+| Engineered Features | 41 (35 principal + 6 QA) |
 | Embedding Dimension | 128 |
 | ANN Backend | HNSW |
 | Storage Format | Partitioned Parquet |
@@ -1089,7 +1089,7 @@ vessel intent, criminal activity, or navigational danger.
 
 ## Intended Use
 
-Operational maritime intelligence.
+Research and analyst-supported maritime anomaly assessment.
 
 ---
 
