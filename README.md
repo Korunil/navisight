@@ -216,7 +216,27 @@ The result is a framework capable of detecting subtle behavioral anomalies that 
 ---
 # Benchmark Results
 
-NaviSight was evaluated on approximately 192 million AIS observations from the Aegean Sea.
+
+NaviSight was developed using 191,974,653 processed AIS observations
+from the Piraeus maritime region. Its principal anomaly-detection
+evaluation comprised 300 matched original–counterfactual trajectory
+pairs (600 decision records) from 214 anonymised vessels.
+
+The behavioural-manifold channel achieved AUROC **0.9309** and
+AUPRC **0.9310**, compared with reconstruction AUROC **0.8737**
+and AUPRC **0.8154**. The manifold-minus-reconstruction AUROC
+difference was **0.0572** (95% paired-bootstrap confidence
+interval: **0.0291–0.0844**).
+
+The conventional unsupervised baselines were evaluated on a
+separate benchmark and are included as descriptive references,
+not instance-matched numerical comparisons.
+
+**Evaluation scope:** Positive cases were generated through
+controlled trajectory perturbations. The principal benchmark
+used different aggregation procedures for known original and
+counterfactual branches; its reported metrics are not estimates
+of independently verified maritime incident detection.
 
 Key results:
 
@@ -291,12 +311,14 @@ Focused on:
 If you use NaviSight in academic work, please cite:
 
 ```bibtex
-@article{korupoju2026navisight,
-  title={NAVISIGHT: A Self-Supervised Maritime Anomaly Detection Framework for AIS Trajectories},
+@unpublished{korupoju2026navisight,
+  title={{NAVISIGHT}: A Self-Supervised Maritime Anomaly
+         Detection Framework for AIS Trajectories},
   author={Korupoju, Anil Kumar},
   journal={Ocean Engineering},
   year={2026},
-  note={Under Review}
+  note={Manuscript submitted to Ocean Engineering,
+        under Review}
 }
 ```
 ---
@@ -435,7 +457,12 @@ NaviSight asks:
 
 This shifts anomaly detection from rule matching to behavioral intelligence.
 
-Rather than relying on fixed thresholds, NaviSight learns normal vessel behavior directly from historical trajectories and identifies subtle deviations that may indicate emerging threats.
+Rather than relying exclusively on manually constructed navigation
+rules, NaviSight learns vessel-behaviour representations from
+historical trajectories and evaluates their reconstruction
+consistency and similarity to class-conditioned behavioural
+references. Calibrated thresholds convert these scores into
+candidate alerts for further assessment.
 
 ## Scale of the Study
 
@@ -468,7 +495,7 @@ Key model parameters:
 | Embedding Dimension | 128 |
 | Transformer Layers | 4 |
 | Attention Heads | 8 |
-| Batch Size | 256 |
+| Batch Size | 512 |
 | Optimizer | AdamW |
 | Random Seed | 42 |
 
@@ -655,7 +682,7 @@ Temporal Context Encoding
         │
         ▼
 
-35-Dimensional Feature Space
+41-Dimensional Serialized Input Space
 ```
 ---
 
@@ -673,13 +700,15 @@ NaviSight's feature registry currently spans four primary domains:
 This multimodal representation enables the system to learn behavioral manifolds rather than relying solely on trajectory geometry.
 
 
+
 | Domain | Features |
-|----------|----------|
-| Physics | 13 |
-| Weather | 9 |
-| Context | 8 |
-| Quality | 5 |
-| Total | 35 |
+|---|---:|
+| Kinematic / motion | 14 |
+| Meteorological | 9 |
+| Operational / geographic context | 12 |
+| Quality assurance | 6 |
+| **Total serialized input** | **41** |
+
 
 ---
 
@@ -1023,9 +1052,16 @@ Features include:
 
 ### Risk Score
 
-```text
-0.0 → 1.0
-```
+NaviSight produces reconstruction, historical behavioural-manifold,
+and continuous prioritization scores. Reconstruction and
+prioritization responses are bounded to [0, 1] by their defined
+transformations; normalized behavioural-manifold distance is not
+upper-clipped and can exceed 1.
+
+Binary alerts are obtained using separately calibrated thresholds.
+The scoring channels indicate departures from learned behaviour
+rather than calibrated probabilities of maritime incidents.
+
 
 ### Threat Classification
 
@@ -1034,6 +1070,10 @@ NOMINAL
 WARNING
 CRITICAL
 ```
+The dashboard may display NOMINAL, WARNING, and CRITICAL
+categories as illustrative analyst-facing presentation states.
+These are not independently validated classifications of
+vessel intent, criminal activity, or navigational danger.
 
 ---
 
@@ -1389,7 +1429,7 @@ navisight/
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/navisight.git
+git clone https://github.com/korunil/navisight.git
 
 cd navisight
 ```
